@@ -148,9 +148,15 @@
 
         <!--imagine cu descriere-->
         <figure>
-            <img style="width: 50%;" src="resurse/front_small.jpg"
-                srcset="resurse/front_small.jpg 0.5x, resurse/front_med.jpg 1x, resurse/front.jpg 1.5x"
+            <picture>
+                <!--se va lua prima sursa care se potriveste-->
+                <source media="(max-width: 600px)" srcset="resurse/front_small.jpg">
+                <source media="(max-width: 1000px)" srcset="resurse/front_med.jpg">
+                <source media="(max-width: 1500px)" srcset="resurse/front.jpg">
+                <img style="width: 50%;" src="resurse/front_small.jpg"
                 alt="Store Front">
+            </picture>
+
             <figcaption style="text-align: center; width: 50%;">Magazinul 2roti din Bucuresti</figcaption>
         </figure>
 
