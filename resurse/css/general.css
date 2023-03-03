@@ -1,12 +1,110 @@
-p{
-    color: red;
+body{
+    
+    --culoare_highlight: #FCA808;
+    --culoare_border: #E07E07;
+    --culoare_principala: #F76806;
+    --culoare_secundara: #E03E07;
+    --culoare_warning: #FC2208;
 }
 
-#echipament{
-    color: orange;
-    border: 3px solid red;
+#grid-pagina{
+    display: grid;
+    grid-template-areas:
+                        "z-prezentare z-prezentare z-prezentare z-prezentare"
+                        "z-tabel z-tabel z-calendar z-calendar"
+                        "z-tabel z-tabel z-anunturi z-anunturi"
+                        "z-utilizatori z-stats z-stats z-server"
+                        "z-div z-div z-div z-div";   
+                        
+    
 }
 
-#despre > h2{
-    color: blue;
+#grid-pagina > section
+{
+    border: 2px solid black;
+}
+#grid-meniu{
+    display: grid;
+    grid-template-areas: "z-casti z-echipamente z-piese z-accesorii";
+    
+}
+
+
+#casti{
+    grid-area: z-casti;
+}
+
+#echipamente{
+    grid-area: z-echipamente;
+}
+
+#piese{
+    grid-area: z-piese;
+}
+
+#accesorii{
+    grid-area: z-accesorii;
+}
+#sigla{
+    text-align: center;
+}
+
+#prezentare{
+    grid-area: z-prezentare;
+    
+}
+
+#img_store{
+    width: 30em;
+}
+
+#imagine_prezentare{
+    text-align: center;
+}
+
+#tabel{
+    grid-area: z-tabel;
+    
+}
+
+#calendar{
+    grid-area: z-calendar;
+    
+}
+
+#anunturi{
+    grid-area: z-anunturi;
+    
+}
+
+#utilizatori{
+    grid-area: z-utilizatori;
+    
+}
+
+#utilizatori > h2{
+    text-align: center;
+}
+#stats{
+    grid-area: z-stats;
+    
+}
+
+#stats > h2
+{
+    text-align: center;
+}
+
+#server{
+    grid-area: z-server;
+    
+}
+
+#server > h2{
+    text-align: center;
+}
+
+#diverse{
+    grid-area: z-div;
+    
 }
