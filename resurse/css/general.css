@@ -1,110 +1,323 @@
-body{
-    
+/* Pentru ecran mic fontul va fi mai mic, grid doar pe coloane, inclusiv meniul si dezactivam orice tranzitie*/
+
+@media screen and (max-width: 700px) {
+
+    html {
+        font-size: 10px;
+        transition: none;
+    }
+
+    #grid-pagina {
+        display: grid;
+        grid-template-areas:
+            "z-prezentare"
+            "z-tabel"
+            "z-calendar"
+            "z-anunturi"
+            "z-utilizatori"
+            "z-stats"
+            "z-server"
+            "z-div";
+    }
+
+    #grid-meniu {
+        display: grid;
+        text-align: center;
+        list-style-position: inside;
+        grid-template-areas:
+            "z-casti"
+            "z-echipamente"
+            "z-piese"
+            "z-accesorii";
+
+    }
+
+    #tabel{
+        overflow: scroll;
+    }
+}
+
+/* Pentru ecran mediu in grid vor fi maxim 2 coloane */
+
+@media screen and (min-width: 701px) and (max-width: 1400px) {
+
+    html {
+        font-size: 12px;
+    }
+
+    #grid-pagina {
+        display: grid;
+        grid-template-areas:
+            "z-prezentare z-prezentare z-prezentare z-prezentare"
+            "z-tabel z-tabel z-calendar z-calendar"
+            "z-tabel z-tabel z-anunturi z-anunturi"
+            "z-stats z-stats z-utilizatori z-utilizatori"
+            "z-stats z-stats z-server z-server"
+            "z-div z-div z-div z-div";
+
+    }
+
+    #grid-meniu {
+        display: grid;
+        grid-template-areas: "z-casti z-echipamente z-piese z-accesorii";
+
+    }
+
+    #tabel{
+        overflow: scroll;
+    }
+
+}
+
+/* Pe ecran normal se va folosi grid-ul default*/
+
+@media screen and (min-width: 1401px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    #grid-pagina {
+        display: grid;
+        grid-template-areas:
+            "z-prezentare z-prezentare z-prezentare z-prezentare"
+            "z-tabel z-tabel z-calendar z-calendar"
+            "z-tabel z-tabel z-anunturi z-anunturi"
+            "z-utilizatori z-stats z-stats z-server"
+            "z-div z-div z-div z-div";
+    }
+
+    #grid-meniu {
+        display: grid;
+        grid-template-areas: "z-casti z-echipamente z-piese z-accesorii";
+
+    }
+
+}
+
+body {
+
     --culoare_highlight: #FCA808;
-    --culoare_border: #E07E07;
-    --culoare_principala: #F76806;
+    --culoare_principala: #E07E07;
+    --culoare_border: #F76806;
     --culoare_secundara: #E03E07;
     --culoare_warning: #FC2208;
 }
 
-#grid-pagina{
-    display: grid;
-    grid-template-areas:
-                        "z-prezentare z-prezentare z-prezentare z-prezentare"
-                        "z-tabel z-tabel z-calendar z-calendar"
-                        "z-tabel z-tabel z-anunturi z-anunturi"
-                        "z-utilizatori z-stats z-stats z-server"
-                        "z-div z-div z-div z-div";   
-                        
-    
+#grid-pagina> section{
+    border: 0.1em solid black;
 }
 
-#grid-pagina > section
-{
-    border: 2px solid black;
-}
-#grid-meniu{
-    display: grid;
-    grid-template-areas: "z-casti z-echipamente z-piese z-accesorii";
-    
+#grid-pagina> div{
+    border: 0.1em solid black;
 }
 
-
-#casti{
+#casti {
     grid-area: z-casti;
 }
 
-#echipamente{
+#echipamente {
     grid-area: z-echipamente;
 }
 
-#piese{
+#piese {
     grid-area: z-piese;
 }
 
-#accesorii{
+#accesorii {
     grid-area: z-accesorii;
 }
-#sigla{
+
+#sigla {
     text-align: center;
 }
 
-#prezentare{
+#prezentare {
     grid-area: z-prezentare;
-    
+
 }
 
-#img_store{
+#img_store {
     width: 30em;
 }
 
-#imagine_prezentare{
+#imagine_prezentare {
     text-align: center;
 }
 
-#tabel{
+#tabel {
     grid-area: z-tabel;
-    
+    text-align: center;
 }
 
-#calendar{
+#calendar {
     grid-area: z-calendar;
-    
+
 }
 
-#anunturi{
+#anunturi {
     grid-area: z-anunturi;
-    
+
 }
 
-#utilizatori{
+#utilizatori {
     grid-area: z-utilizatori;
-    
+
 }
 
-#utilizatori > h2{
+#utilizatori>h2 {
     text-align: center;
 }
-#stats{
+
+#stats {
     grid-area: z-stats;
-    
+
 }
 
-#stats > h2
-{
+#stats>h2 {
     text-align: center;
 }
 
-#server{
+#server {
     grid-area: z-server;
-    
+
 }
 
-#server > h2{
+#server>h2 {
     text-align: center;
 }
 
-#diverse{
+#diverse {
     grid-area: z-div;
+
+}
+
+/* font size responsive */
+
+
+html {
+    transition: font-size 0.5s;
+}
+
+header {
+    font-size: 1.2em;
+}
+
+body {
+    font-size: 1.2em;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+#video-flex{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+#butoane-video{
+    display: flex;
+    flex-direction: column;
+    
     
 }
+
+#butoane-video button{
+    width: 6em;
+    height: 3em;
+    font-size: 1.2em;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: var(--culoare_highlight);
+    border: 0.1em  solid var(--culoare_border);
+    border-radius: 0.2em;
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0.2em  0.05em 0em 0em var(--culoare_border) inset;
+    margin-bottom: 0.1em;
+    
+}
+
+#butoane-video button:hover{
+    background-color: var(--culoare_border);
+    color: white;
+    transition: 0.5s;
+}
+
+#ifr-video{
+    width: 40em;
+    height: 20em;
+    border: 0.2em solid var(--culoare_border);
+}
+
+/* tabel */
+#orar{
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 32em;
+}
+
+#orar tbody tr:nth-child(odd){
+    border-bottom: 1px solid var(--culoare_warning);
+    border-top: 0;
+}
+
+#orar tbody tr:nth-child(even){
+    border-bottom: 1px solid var(--culoare_highlight);
+    border-top: 0;
+}
+
+#orar th, td
+{
+    border: 1px solid var(--culoare_border);
+    text-align: center;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+#orar thead{
+    border-bottom: 1px solid var(--culoare_border);
+}
+
+
+#orar tbody tr:hover, thead tr:hover, tfoot tr:hover{
+    outline: 5px solid rgba(233,2,22,0.7);
+    transition: 0.5s;
+    
+}
+
+#orar{
+    box-shadow: 0 5px 0 0 var(--culoare_border) inset; /* Border bottom */
+    box-shadow: 0 -5px 0 0 var(--culoare_border) inset; /* Border top */
+    box-shadow: -5px 0 0 0 var(--culoare_border) inset; /* Border left */
+    box-shadow: 5px 0 0 0 var(--culoare_border) inset; /* Border right */
+    box-shadow: 0 0 0 5px var(--culoare_border) inset; /* All the borders by using the spread properties */
+}
+
+#orar tfoot, thead th{
+    height: 2em;
+}
+
+/* caption tabel */
+#orar caption
+{
+    caption-side: bottom;
+    text-align: center;
+}
+

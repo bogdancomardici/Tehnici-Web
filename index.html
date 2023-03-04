@@ -147,18 +147,81 @@
 
             </section>
 
-            <section id="tabel">
+            <div id="tabel">
                 <h2>Program</h2>
 
-                <ul>
-                    <li>Luni</li>
-                    <li>Marti</li>
-                    <li>Miercuri</li>
-                    <li>Joi</li>
-                    <li>Vineri</li>
-                </ul>
+                <table id="orar">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Magazin</th>
+                            <th colspan="2">Test-Ride</th>
+                        </tr>
+                    </thead>
+                    
+                <tbody>
+                    <tr>
+                        <td>Luni</td>
+                        <td>08:00</td>
+                        <td>18:00</td>
+                        <td>10:00</td>
+                        <td>14:00</td>
+                    </tr>
 
-            </section>
+                    <tr>
+                        <td>Marti</td>
+                        <td>08:00</td>
+                        <td>18:00</td>
+                        <td>10:00</td>
+                        <td>14:00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Miercuri</td>
+                        <td>08:00</td>
+                        <td>18:00</td>
+                        <td>10:00</td>
+                        <td>14:00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Joi</td>
+                        <td>08:00</td>
+                        <td>18:00</td>
+                        <td>10:00</td>
+                        <td>14:00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Vineri</td>
+                        <td>08:00</td>
+                        <td>18:00</td>
+                        <td>12:00</td>
+                        <td>18:00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sambata</td>
+                        <td>10:00</td>
+                        <td>14:00</td>
+                        <td>10:00</td>
+                        <td>14:00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Duminica</td>
+                        <td>10:00</td>
+                        <td>13:00</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <th colspan="5">Programare Test-Ride: 0712345678</th>
+                </tfoot>
+                <caption>2Roti - program</caption>
+                </table>
+            </div>
 
             <section id="calendar">
 
@@ -223,14 +286,19 @@
                         Pentru un ghid detaliat puteti accesa site-ul producatorului de motociclete
                         <a href="https://triumphromania.ro/alegerea-echipamentului-moto-recomandari-pentru-incepatori/"
                             target="_blank">Triumph</a>
-                        sau videoclipuri precum al celor de la <a href="https://www.youtube.com/embed/6Rx-dyDU888"
-                            target="ifr">Est Bike Constanta</a>
-                        sau <a href="https://www.youtube.com/embed/V5ZHmTCxEtU" target="ifr">Yammie Noob</a>.
+                        sau videoclipuri precum cele de mai jos: 
+                     
 
                     </p>
+
                     <!--iframe-->
-                    <iframe src="https://www.youtube.com/embed/V5ZHmTCxEtU" name="ifr"
-                        style="width: 50%; height: 300px;"></iframe>
+                    <div id="video-flex">
+                        <div id="butoane-video">
+                        <a href="https://www.youtube.com/embed/6Rx-dyDU888" target="ifr"><button>Est Bike Constanta</button></a>
+                        <a href="https://www.youtube.com/embed/V5ZHmTCxEtU" target="ifr"><button>Yammie Noob</button></a>
+                        </div>
+                        <iframe id="ifr-video" src="https://www.youtube.com/embed/V5ZHmTCxEtU" name="ifr"></iframe>
+                    </div>
                 </section>
 
 
