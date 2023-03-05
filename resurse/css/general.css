@@ -106,12 +106,42 @@ body {
 
 #grid-pagina> section{
     border: 0.1em solid black;
+    background-color: white;
+    margin: 2em;
+    padding: 1em;
+    border-radius: 1em;
 }
 
 #grid-pagina> div{
     border: 0.1em solid black;
+    background-color: white;
+    margin: 2em;
+    padding: 1em;
+    border-radius: 1em;
 }
 
+header{
+    background-color: var(--culoare_principala);
+}
+
+body{
+    background-color: var(--culoare_principala);
+}
+
+footer{
+    border: 0.1em solid black;
+    background-color: white;
+    margin: 2em;
+    padding: 1em;
+    border-radius: 1em;
+}
+#grid-meniu > li{
+    border: 0.1em solid black;
+    background-color: white;
+    margin: 2em;
+    padding: 1em;
+    border-radius: 1em;
+}
 #casti {
     grid-area: z-casti;
 }
@@ -228,6 +258,7 @@ p {
     flex-direction: row;
     align-content: center;
     justify-content: center;
+    margin: 2em;
 }
 
 #butoane-video{
@@ -237,6 +268,9 @@ p {
     
 }
 
+details{
+    transition: 1s;
+}
 #butoane-video button{
     width: 6em;
     height: 3em;
@@ -321,3 +355,57 @@ p {
     text-align: center;
 }
 
+/* buton acasa */
+
+#acasa
+{   
+    position: fixed;
+    right: 5%;
+    bottom: 0.1em;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    display: flex;
+    margin: auto;
+    border: 0.15em solid var(--culoare_border);
+    width: 2em;
+    height: 2em;
+    rotate: 45deg;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    background-color: var(--culoare_highlight);
+    opacity: 0.2;
+}
+
+#acasa:hover{
+    opacity: 1;
+    background-color: var(--culoare_border);
+    transition: 0.4s;
+    border-color: var(--culoare_highlight);
+    
+}
+
+#acasa:hover #triunghi-acasa{
+    border-bottom-color: white;
+    transition: 0.4s;
+}
+
+
+
+#triunghi-acasa{
+    
+    rotate: -45deg;
+    margin-right: 0.35em;
+    margin-bottom: 0.35em;
+    width: 0;
+    height: 0;
+    border-left: 0.8em solid transparent;
+    border-right: 0.8em solid transparent;
+    border-bottom: 1.2em solid var(--culoare_border);
+    border-bottom-right-radius: 0.8em;
+    border-bottom-left-radius: 0.8em;
+}
+
+main{
+    background-color: var(--culoare_principala);
+}
