@@ -24,27 +24,41 @@
 
     <!--css file-->
     <link rel="stylesheet" href="resurse/css/general.css" type="text/css" />
+    <link rel="stylesheet" href="resurse/css/general2000.css" type="text/css" media="screen and (max-width:2000px)" />
+    <link rel="stylesheet" href="resurse/css/general1400.css" type="text/css" media ="screen and (max-width:1400px)" />
+    <link rel="stylesheet" href="resurse/css/general700.css" type="text/css" media="screen and (max-width:700px)" />
+    
+    <!--font extern-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    <!--icons-->
+    <script src="https://kit.fontawesome.com/45cd62c30b.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
+    
     <header>
         <!--Titlu-->
         <h1 id="sigla">2roti - Magazin Moto Online</h1>
+        
 
         <!--meniu nav-->
-        <nav id="grid-meniu">
+    </header>
 
-            <li id="casti">
-                <a href="#casti">Casti</a>
+    <nav id="nav2">
+
+        <ul class="meniu2" id="grid-meniu2">
+            <li id="casti2">
+                <div>Casti</div>
                 <ul>
                     <li><a href="#casti_integrale">Integrale</a></li>
                     <li><a href="#casti_flipup">Flip-Up</a></li>
                     <li><a href="#casti_open">Open Face</a></li>
                 </ul>
             </li>
-
-            <li id="echipamente">
-                <a href="#echipamente">Echipamente</a>
+            <li id="echipamente2">
+                <div>Echipamente</div>
                 <ul>
                     <li><a href="#geci">Geci</a></li>
                     <li><a href="#pantaloni">Pantaloni</a></li>
@@ -52,8 +66,8 @@
                 </ul>
             </li>
 
-            <li id="piese">
-                <a href="#piese">Piese</a>
+            <li id="piese2">
+                <div>Piese</div>
                 <ul>
                     <li><a href="#kit_lant">Kit Lant</a></li>
                     <li><a href="#discuri">Discuri</a></li>
@@ -63,8 +77,8 @@
                 </ul>
             </li>
 
-            <li id="accesorii">
-                <a href="#accesorii">Accesorii</a>
+            <li id="accesorii2">
+                <div>Accesorii</div>
                 <ul>
                     <li><a href="#huse">Huse</a></li>
                     <li><a href="#genti">Genti</a></li>
@@ -72,8 +86,9 @@
                 </ul>
             </li>
 
-        </nav>
-    </header>
+            <li id="contact-buton"><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <main>
 
@@ -82,7 +97,7 @@
             <section id="prezentare">
 
                 <h2>
-                    Despre Noi
+                    <i class="fa-solid fa-circle-info"></i> Despre Noi
                 </h2>
 
                 <p>
@@ -122,6 +137,7 @@
                 <section id="service">
 
                     <h3>
+                        <i class="fa-solid fa-wrench"></i>
                         Service
                     </h3>
 
@@ -148,7 +164,7 @@
             </section>
 
             <div id="tabel">
-                <h2>Program</h2>
+                <h2><i class="fa-solid fa-clock"></i>Program</h2>
 
                 <table id="orar">
                     <thead>
@@ -225,15 +241,17 @@
 
             <section id="calendar">
 
-                <h2>Calendar</h2>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere sint, voluptates fugiat mollitia maiores
+                <h2><i class="fa-solid fa-calendar"></i>Calendar</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere sint, voluptates fugiat mollitia maiores
                 repellat porro fugit exercitationem. Accusantium minus non libero totam rem modi quae est sapiente sed
                 hic!
+                </p> 
 
             </section>
 
             <section id="anunturi">
-                <h2>Anunturi</h2>
+                <h2><i class="fa-solid fa-bullhorn"></i>Anunturi</h2>
                 <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto nulla iusto, iste ipsam
                     accusantium, cupiditate veniam soluta asperiores iure odit nostrum? Nulla commodi, voluptatem atque
@@ -242,7 +260,7 @@
             </section>
 
             <section id="utilizatori">
-                <h2>Utilizatori</h2>
+                <h2><i class="fa-solid fa-users"></i>Utilizatori</h2>
                 <ul>
                     <li>utilizator1</li>
                     <li>utilizator2</li>
@@ -253,7 +271,7 @@
             </section>
 
             <section id="stats">
-                <h2>Statistici</h2>
+                <h2><i class="fa-solid fa-chart-simple"></i>Statistici</h2>
                 <ul>
                     <li>Suneteti logat ca: utilizator1</li>
                     <li>Timp Online: 2 ore</li>
@@ -264,7 +282,7 @@
             </section>
 
             <section id="server">
-                <h2>Server</h2>
+                <h2><i class="fa-solid fa-server fa-fade"></i>Server</h2>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur illo quisquam sed ipsum
                     assumenda expedita praesentium odit molestiae amet, est, unde quod cupiditate maxime incidunt harum
@@ -274,7 +292,7 @@
 
             <section id="diverse">
                 <section id="echipament">
-                    <h2>Alegerea corecta a echipamentului</h2>
+                    <h2><i class="fa-solid fa-shirt"></i>Alegerea corecta a echipamentului</h2>
 
                     <!--text preluat de pe motoincepatori.ro-->
                     <p>
@@ -306,7 +324,7 @@
                 <!--sectiune details and summary-->
                 <section id="intrebari_frecvente">
 
-                    <h2>Întrebări frecvente</h2>
+                    <h2><i class="fa-solid fa-circle-question"></i>Întrebări frecvente</h2>
                     <details>
                         <summary>Ce înseamnă cilindreea unei motociclete?</summary>
                         Cilindreea unei motociclete este volumul total al cilindrilor motorului și este măsurată în
@@ -352,15 +370,15 @@
 
     
     <footer>
-        <h4>Contact</h4>
+        <h2><i class="fa-solid fa-address-book"></i>Contact</h2>
         <!--informatii de contact cu link-uri-->
-        <address>
+        <address id="contact">
             <ul>
-                <li>Telefon : <a href="tel:0712345678">0712345678</a></li>
-                <li>Adresa : <a href="https://goo.gl/maps/CMXPN1hX8gPmjB9q6" target="_blank">Strada Motoarelor nr.15</a>
+                <li><i class="fa-solid fa-phone"></i>Telefon : <a href="tel:0712345678">0712345678</a></li>
+                <li><i class="fa-solid fa-location-dot fa-bounce"></i>Adresa : <a href="https://goo.gl/maps/CMXPN1hX8gPmjB9q6" target="_blank">Strada Motoarelor nr.15</a>
                 </li>
-                <li>Email : <a href="mailto:2roti@gmail.com">2roti@gmail.com</a></li>
-                <li>Scrie-ne pe <a href="https://wa.link/vhxwx3" target="_blank">Whatsapp</a>
+                <li><i class="fa-solid fa-envelope"></i>Email : <a href="mailto:2roti@gmail.com">2roti@gmail.com</a></li>
+                <li><i class="fa-solid fa-message"></i>Scrie-ne pe <a href="https://wa.link/vhxwx3" target="_blank">Whatsapp</a>
                 </li>
             </ul>
         </address>

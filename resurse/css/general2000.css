@@ -1,0 +1,28 @@
+/* Pe ecran normal se va folosi grid-ul default*/
+
+@media screen and (min-width: 1401px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    #grid-pagina {
+        display: grid;
+        grid-template-areas:
+            "z-prezentare z-prezentare z-prezentare z-prezentare"
+            "z-tabel z-tabel z-calendar z-calendar"
+            "z-tabel z-tabel z-anunturi z-anunturi"
+            "z-utilizatori z-stats z-stats z-server"
+            "z-div z-div z-div z-div";
+
+        
+    }
+
+    #grid-meniu {
+        display: grid;
+        grid-template-areas: "z-casti z-echipamente z-piese z-accesorii";
+
+    }
+
+}
+
