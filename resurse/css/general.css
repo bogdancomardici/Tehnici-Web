@@ -520,7 +520,13 @@ ul.meniu2 ul {
 ul.meniu2 li:hover div,
 li:hover a {
   font-size: 1.2em;
-  transition: 0.3s;
+  transition: font-size 0.2s linear;
+}
+
+ul.meniu2 li div,
+li a {
+  font-size: 1em;
+  transition: font-size 0.2s linear;
 }
 
 ul.meniu2 ul {
@@ -548,9 +554,14 @@ ul.meniu2 li ul li:hover {
   text-align: center;
   box-shadow: 0.25em 0em 0.25em 0.1em var(--culoare_highlight),
     -0.25em 0em 0.25em 0.1em var(--culoare_highlight);
+    
 }
 
 ul.meniu2 li ul li {
   margin: auto;
   text-align: center;
+  box-shadow: 0em 0em 0em 0.12em var(--culoare_highlight),
+  0em 0em 0em 0.12em var(--culoare_highlight);;
+  transition: 0.2s;
+  transform-origin: bottom;
 }
