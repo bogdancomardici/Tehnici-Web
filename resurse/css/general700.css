@@ -1,7 +1,6 @@
 /* Pentru ecran mic fontul va fi mai mic, grid doar pe coloane, inclusiv meniul si dezactivam orice tranzitie*/
 
 @media screen and (max-width: 700px) {
-
     html {
         font-size: 10px;
         transition: none;
@@ -19,37 +18,18 @@
             "z-stats"
             "z-server"
             "z-div";
-
-        
-        
     }
 
-    #grid-pagina > section{
+    #grid-pagina > section {
         width: 100vw;
     }
 
-    #grid-meniu {
-        display: grid;
-        gap: 1em;
-        text-align: center;
-        list-style-position: inside;
-        grid-template-areas:
-            "z-casti"
-            "z-echipamente"
-            "z-piese"
-            "z-accesorii";
-    
-    }
-
-
-    #tabel{
+    #tabel {
         overflow: scroll;
     }
 
-    #body{
+    #body {
         --page_spacing: 2em;
         width: 100vw;
     }
-
-    
 }
