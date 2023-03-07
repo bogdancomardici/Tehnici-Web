@@ -124,6 +124,9 @@ table {
     border-collapse: collapse;
 }
 
+#logo{
+    width: 5vw;
+}
 /* grid */
 
 #grid-pagina {
@@ -204,6 +207,7 @@ footer {
 
 #sigla {
     text-align: center;
+    color: #FFFFFF;
 }
 
 #prezentare {
