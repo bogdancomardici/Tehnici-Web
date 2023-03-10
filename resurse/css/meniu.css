@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   position: sticky;
-  width: calc(100%);
+  width: 100%;
   z-index: 1;
 }
 
@@ -41,6 +41,7 @@ ul.meniu {
   padding: 0;
   justify-content: center;
   align-items: center;
+  margin-left: var(--grosime-border);
 }
 ul.meniu li {
   overflow: hidden;

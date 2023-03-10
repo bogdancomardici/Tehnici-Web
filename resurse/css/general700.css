@@ -18,18 +18,41 @@
             "z-stats"
             "z-server"
             "z-div";
+            
     }
 
     #grid-pagina > section {
-        width: 100vw;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    #grid-pagina > div {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
     }
 
     #tabel {
         overflow: scroll;
     }
 
-    #body {
+    body {
         --page_spacing: 2em;
-        width: 100vw;
+        max-width: 100%;
+        
     }
+
+    header{
+        padding: 0;
+        margin: 0;
+        
+    }
+
+    nav{
+        margin-right: 0;
+        padding: 0;
+        width: 100%;
+    }
+
 }

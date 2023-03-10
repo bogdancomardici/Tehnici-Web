@@ -25,4 +25,14 @@
         --page_spacing: 3em;
         width: 100%;
     }
+
+    #scris-acasa{
+        display: none;
+    }
+    
+    .fa-house{
+        font-size: 1.4em;
+        margin: auto;
+        width: 1em;
+    }
 }
