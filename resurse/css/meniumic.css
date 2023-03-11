@@ -12,11 +12,10 @@
   left: 0;
   position: sticky;
   width: 100%;
+  height: var(--inaltime_buton);
   z-index: 1;
-}
-
-#hamburger {
-  display: none;
+  display: flex;
+  flex-direction: column;
 }
 
 ul.meniu li div,
@@ -46,6 +45,8 @@ ul.meniu {
   justify-content: center;
   align-items: center;
   margin-left: var(--grosime-border);
+  align-items: baseline;
+  flex-direction: column;
 }
 ul.meniu li {
   overflow: hidden;
@@ -59,6 +60,8 @@ ul.meniu li {
 ul.meniu li:hover {
   overflow: visible;
   opacity: 1;
+  height: fit-content;
+  transition: 1s;
 }
 ul.meniu li:hover ul {
   opacity: 1;
@@ -136,7 +139,7 @@ ul.meniu li ul li::after {
 ul.meniu > li {
   margin-right: var(--grosime-border);
   border: 0;
-  border-right: var(--grosime-border) solid black;
+  width: 100%;
 }
 ul.meniu ul {
   padding: 0;
@@ -149,6 +152,16 @@ ul.meniu ul {
   border-radius: 1em;
 }
 
+#meniu-container {
+  width: 0%;
+  transition: 0.5s;
+  border-radius: 1em;
+  background-color: var(--culoare_highlight);
+}
+#meniu-container:hover {
+  width: 100%;
+}
+
 ul.meniu li ul li:hover::after, ul.meniu li ul li:hover::before {
   visibility: visible;
   transform: scale(1, 1);
@@ -158,4 +171,4 @@ ul.meniu li ul li:hover::after, ul.meniu li ul li:hover::before {
   border: 0;
 }
 
-/*# sourceMappingURL=meniu.css.map */
+/*# sourceMappingURL=meniumic.css.map */

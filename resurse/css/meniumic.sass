@@ -12,9 +12,10 @@
 	left: 0 
 	position: sticky 
 	width: 100% 
+	height: var(--inaltime_buton) 
 	z-index: 1 
-#hamburger 
-	display: none 
+	display: flex 
+	flex-direction: column 
 ul.meniu li div,
 ul.meniu li a 
 	display: block 
@@ -39,6 +40,8 @@ ul
 		justify-content: center 
 		align-items: center 
 		margin-left: var(--grosime-border) 
+		align-items: baseline 
+		flex-direction: column 
 		li 
 			overflow: hidden 
 			width: var(--latime-buton) 
@@ -50,6 +53,8 @@ ul
 			&:hover 
 				overflow: visible 
 				opacity: 1 
+				height: fit-content 
+				transition: 1s 
 				ul 
 					opacity: 1 
 					transform-origin: top 
@@ -120,7 +125,7 @@ ul
 		& > li 
 			margin-right: var(--grosime-border) 
 			border: 0 
-			border-right: var(--grosime-border) solid black 
+			width: 100% 
 		ul 
 			padding: 0 
 			margin: 0 
@@ -130,6 +135,13 @@ ul
 			transform: scale(1, 0) 
 			border: var(--grosime-border) solid var(--culoare_highlight) 
 			border-radius: 1em 
+#meniu-container 
+	width: 0% 
+	transition: 0.5s 
+	border-radius: 1em 
+	background-color: var(--culoare_highlight) 
+	&:hover 
+		width: 100% 
 ul.meniu li ul li:hover::after, ul.meniu li ul li:hover::before 
 	visibility: visible 
 	transform: scale(1, 1) 

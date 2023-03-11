@@ -55,4 +55,8 @@
         width: 100%;
     }
 
+    #scris-acasa{
+        display: none;
+    }
+
 }

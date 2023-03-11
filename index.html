@@ -89,6 +89,14 @@
             rel="stylesheet"
             href="resurse/css/meniu.css"
             type="text/css"
+            media="screen and (max-width:2000px) and (min-width:701px)"
+        />
+
+        <link
+            rel="stylesheet"
+            href="resurse/css/meniumic.css"
+            type="text/css"
+            media="screen and (max-width:700px)"
         />
 
         <!--font extern-->
@@ -102,6 +110,21 @@
             src="https://kit.fontawesome.com/45cd62c30b.js"
             crossorigin="anonymous"
         ></script>
+
+        <script>
+
+            function afiseaza_meniu(){
+                var meniu = document.getElementById("meniu-container");
+                
+                if(meniu.style.width === "100%"){
+                    meniu.style.width = "0%";
+                }else{
+                    meniu.style.width = "100%";
+                    meniu.style.height = "fit-content";
+                }
+            }
+
+        </script>
     </head>
 
     <body>
@@ -113,7 +136,12 @@
         </header>
 
         <nav id="nav">
+            
+            <div id="hamburger" onclick="afiseaza_meniu()">Hamburger</div>
+            
+            <div id="meniu-container" tabindex="0">
             <ul class="meniu">
+                
                 <li id="acasa-buton"><a href="#sigla"><div><i class="fa-solid fa-house"></i><b id="scris-acasa">Acasa</b></div></a></li>
                 <li id="casti">
                     <div><i class="fa-solid fa-helmet-safety"></i>Casti</div>
@@ -154,6 +182,8 @@
 
                 <li id="contact-buton"><a href="#contact"><div><i class="fa-solid fa-id-card"></i>Contact</div></a></li>
             </ul>
+        </div>
+       
         </nav>
 
         <main>
