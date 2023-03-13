@@ -18,7 +18,7 @@
             "z-stats"
             "z-server"
             "z-div";
-            
+        width: calc(100% - var(--page_spacing));
     }
 
     #grid-pagina > section {
@@ -40,7 +40,6 @@
     body {
         --page_spacing: 2em;
         max-width: 100%;
-        
     }
 
     header{

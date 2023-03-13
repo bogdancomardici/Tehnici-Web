@@ -455,3 +455,15 @@ address > ul > li {
 #diverse li {
     padding-top: 1em;
 }
+
+#contact ul li a{
+    transition: 0;
+    font-size: 1em;
+}
+
+#logo2{
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

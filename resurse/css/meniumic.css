@@ -273,7 +273,10 @@ ul.meniu li ul li:hover::before {
   position: absolute;
   top: 0;
   left: 1em;
+  border-radius: 0.5em;
+  transition: 0.2s linear;
 }
+
 
 #ham-center,
 #ham-top,
@@ -317,6 +320,10 @@ ul.meniu li ul li:hover::before {
 
 #hamburger div:nth-last-child(3) {
   animation-delay: 0.9s;
+}
+
+#hamburger:hover{
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=meniumic.css.map */
