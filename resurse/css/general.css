@@ -310,10 +310,10 @@ p {
     flex-direction: column;
 }
 
-#butoane-video button {
+#butoane-video a {
     width: 6em;
     height: 3em;
-    font-size: 1.2em;
+    font-size: 1em;
     background-color: var(--culoare_highlight);
     border: var(--grosime-border) solid var(--culoare_border);
     border-radius: 0.2em;
@@ -322,9 +322,15 @@ p {
     border-bottom-right-radius: 0;
     box-shadow: 0.2em 0.05em 0em 0em var(--culoare_border) inset;
     margin-bottom: 0.1em;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    line-height: 1.5em;
+    vertical-align: middle;
 }
 
-#butoane-video button:hover {
+#butoane-video a:hover {
     background-color: var(--culoare_border);
     color: white;
     transition: 0.5s;
@@ -466,4 +472,10 @@ address > ul > li {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#copyright{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }

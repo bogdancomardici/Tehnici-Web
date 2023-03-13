@@ -6,104 +6,106 @@
         <title>2roti</title>
 
         <!--tag-uri meta charset, keywords, author, description-->
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8" >
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"
-        />
+        >
         <meta
             name="keywords"
             content="motocicleta, echipament, piese, casca, moto"
-        />
+        >
         <meta
             name="description"
             content="2roti - Magazin online de piese, accesorii si echipament pentru motociclete"
-        />
+        >
         <meta
             name="author"
             content="Comardici Bogdan"
-        />
+        >
 
         <!--favicon-->
         <link
             rel="apple-touch-icon"
             sizes="180x180"
             href="resurse/apple-touch-icon.png"
-        />
+        >
         <link
             rel="icon"
             type="image/png"
             sizes="32x32"
             href="resurse/favicon-32x32.png"
-        />
+        >
         <link
             rel="icon"
             type="image/png"
             sizes="16x16"
             href="resurse/favicon-16x16.png"
-        />
+        >
         <link
             rel="manifest"
             href="resurse/site.webmanifest"
-        />
+        >
         <link
             rel="mask-icon"
             href="resurse/safari-pinned-tab.svg"
             color="#5bbad5"
-        />
+        >
         <meta
             name="msapplication-TileColor"
             content="#ffc40d"
-        />
+        >
         <meta
             name="theme-color"
             content="#ffffff"
-        />
+        >
 
         <!--css file-->
         <link
             rel="stylesheet"
             href="resurse/css/general.css"
             type="text/css"
-        />
+        >
         <link
             rel="stylesheet"
             href="resurse/css/general2000.css"
             type="text/css"
             media="screen and (max-width:2000px)"
-        />
+        >
         <link
             rel="stylesheet"
             href="resurse/css/general1400.css"
             type="text/css"
             media="screen and (max-width:1400px)"
-        />
+        >
         <link
             rel="stylesheet"
             href="resurse/css/general700.css"
             type="text/css"
             media="screen and (max-width:700px)"
-        />
+        >
 
         <link
             rel="stylesheet"
             href="resurse/css/meniu.css"
             type="text/css"
             media="screen and (max-width:2000px) and (min-width:701px)"
-        />
+        >
 
         <link
             rel="stylesheet"
             href="resurse/css/meniumic.css"
             type="text/css"
             media="screen and (max-width:700px)"
-        />
+        >
 
         <!--font extern-->
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Raleway"
-        />
+        >
+
+        <link rel="stylesheet" href="resurse/css/print.css">
 
         <!--icons-->
         <script
@@ -147,7 +149,7 @@
             <div id="meniu-container" tabindex="0">
             <ul class="meniu">
                 
-                <li id="acasa-buton"><a href="#sigla"><div><i class="fa-solid fa-house"></i><b id="scris-acasa">Acasa</b></div></a></li>
+                <li id="acasa-buton"><a href="#logo2"><div><i class="fa-solid fa-house"></i><b id="scris-acasa">Acasa</b></div></a></li>
                 <li id="casti">
                     <div><i class="fa-solid fa-helmet-safety"></i>Casti</div>
                     <ul>
@@ -226,20 +228,20 @@
                             <source
                                 media="(max-width: 600px)"
                                 srcset="resurse/front_small.jpg"
-                            />
+                            >
                             <source
                                 media="(max-width: 1000px)"
                                 srcset="resurse/front_med.jpg"
-                            />
+                            >
                             <source
                                 media="(max-width: 2000px)"
                                 srcset="resurse/front.jpg"
-                            />
+                            >
                             <img
                                 id="img_store"
                                 src="resurse/front_small.jpg"
                                 alt="Store Front"
-                            />
+                            >
                         </picture>
 
                         <figcaption>Magazinul 2roti din Bucuresti</figcaption>
@@ -283,6 +285,9 @@
                     <h2><i class="fa-solid fa-clock"></i>Program</h2>
 
                     <table id="orar">
+                        <caption>
+                            2Roti - program
+                        </caption>
                         <thead>
                             <tr>
                                 <th colspan="3">Magazin</th>
@@ -347,14 +352,11 @@
                                 <td>-</td>
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <th colspan="5">
-                                Programare Test-Ride: 0712345678
-                            </th>
+                        <tfoot >
+                                <tr>
+                                    <td colspan="5">Programare Test-Ride: 0712345678</td>
+                                </tr>
                         </tfoot>
-                        <caption>
-                            2Roti - program
-                        </caption>
                     </table>
                 </div>
 
@@ -412,7 +414,7 @@
                     </p>
                 </section>
 
-                <section id="diverse">
+                <div id="diverse">
                     <section id="echipament">
                         <h2>
                             <i class="fa-solid fa-shirt"></i>Alegerea corecta a
@@ -443,12 +445,12 @@
                                 <a
                                     href="https://www.youtube.com/embed/6Rx-dyDU888"
                                     target="ifr"
-                                    ><button>Est Bike Constanta</button></a
+                                    >Est Bike Constanta</a
                                 >
                                 <a
                                     href="https://www.youtube.com/embed/V5ZHmTCxEtU"
                                     target="ifr"
-                                    ><button>Yammie Noob</button></a
+                                    >Yammie Noob</a
                                 >
                             </div>
                             <iframe
@@ -511,13 +513,13 @@
                             intervale de 2-3 ani.
                         </details>
                     </section>
-                </section>
+                </div>
             </div>
             <div
                 id="acasa"
                 title="Acasa"
             >
-                <a href="#sigla"><div id="triunghi-acasa"></div></a>
+                <a href="#logo2"><div id="triunghi-acasa"></div></a>
             </div>
         </main>
 
@@ -555,13 +557,14 @@
             </address>
 
             <!--copyright-->
-            <center>
+            <div id="copyright">
                 <small>
                     &copy; Copyright
                     <time datetime="2023-02-21">21 Feb 2023</time> Bogdan
-                    Comardici</small
-                >
-            </center>
+                    Comardici</small>
+                
+            </div>
         </footer>
+        <div id="watermark"></div>
     </body>
 </html>
