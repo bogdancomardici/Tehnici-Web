@@ -47,6 +47,7 @@ ul.meniu {
   align-items: center;
   margin-left: var(--grosime-border);
 }
+
 ul.meniu li {
   overflow: hidden;
   width: var(--latime-buton);
@@ -56,27 +57,32 @@ ul.meniu li {
   margin-left: -0.1em;
   width: 16em;
 }
+
 ul.meniu li:hover {
   overflow: visible;
   opacity: 1;
 }
+
 ul.meniu li:hover ul {
   opacity: 1;
   transform-origin: top;
   transition: 0.2s linear;
   transform: scale(1, 1);
 }
+
 ul.meniu li ul li {
   margin: auto;
   text-align: center;
   width: 100%;
 }
+
 ul.meniu li ul li:last-child {
   border: var(--grosime-border) solid var(--culoare_highlight);
   border: 0;
   border-bottom-left-radius: 0.8em;
   border-bottom-right-radius: 0.8em;
 }
+
 ul.meniu li ul li:last-child::before {
   visibility: hidden;
   width: 0.7em;
@@ -89,6 +95,7 @@ ul.meniu li ul li:last-child::before {
   position: absolute;
   margin-left: calc(-1 * var(--grosime-border));
 }
+
 ul.meniu li ul li:last-child::after {
   visibility: hidden;
   width: 0.7em;
@@ -103,6 +110,7 @@ ul.meniu li ul li:last-child::after {
   margin-top: -2em;
   margin-right: calc(-1 * var(--grosime-border));
 }
+
 ul.meniu li ul li::before {
   visibility: hidden;
   width: 0.7em;
@@ -117,6 +125,7 @@ ul.meniu li ul li::before {
   transition: 0.2s all;
   transform-origin: top;
 }
+
 ul.meniu li ul li::after {
   visibility: hidden;
   width: 0.7em;
@@ -133,11 +142,13 @@ ul.meniu li ul li::after {
   transition: 0.2s all;
   transform-origin: top;
 }
-ul.meniu > li {
+
+ul.meniu>li {
   margin-right: var(--grosime-border);
   border: 0;
   border-right: var(--grosime-border) solid black;
 }
+
 ul.meniu ul {
   padding: 0;
   margin: 0;
@@ -149,7 +160,8 @@ ul.meniu ul {
   border-radius: 1em;
 }
 
-ul.meniu li ul li:hover::after, ul.meniu li ul li:hover::before {
+ul.meniu li ul li:hover::after,
+ul.meniu li ul li:hover::before {
   visibility: visible;
   transform: scale(1, 1);
 }

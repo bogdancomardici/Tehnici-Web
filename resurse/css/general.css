@@ -100,18 +100,22 @@ nav,
 section {
     display: block;
 }
+
 body {
     line-height: 1;
     margin: 0;
 }
+
 ol,
 ul {
     list-style: none;
 }
+
 blockquote,
 q {
     quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -119,6 +123,7 @@ q:after {
     content: "";
     content: none;
 }
+
 table {
     border-collapse: collapse;
 }
@@ -126,6 +131,7 @@ table {
 #logo {
     width: 5vw;
 }
+
 /* grid */
 
 #grid-pagina {
@@ -134,7 +140,7 @@ table {
 }
 
 /* diferentierea se face cu border, border-radius si box shadow */
-#grid-pagina > section {
+#grid-pagina>section {
     border: var(--grosime-border) solid black;
     background-color: white;
     padding: var(--padding_pagina);
@@ -142,7 +148,7 @@ table {
     max-width: 100vw;
 }
 
-#grid-pagina > div {
+#grid-pagina>div {
     border: var(--grosime-border) solid black;
     background-color: white;
     padding: var(--padding_pagina);
@@ -150,7 +156,7 @@ table {
     max-width: 100vw;
 }
 
-#grid-pagina > *,
+#grid-pagina>*,
 footer,
 #nav {
     box-shadow: 0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
@@ -241,7 +247,7 @@ footer {
     grid-area: z-utilizatori;
 }
 
-#utilizatori > h2 {
+#utilizatori>h2 {
     text-align: center;
 }
 
@@ -249,7 +255,7 @@ footer {
     grid-area: z-stats;
 }
 
-#stats > h2 {
+#stats>h2 {
     text-align: center;
 }
 
@@ -257,7 +263,7 @@ footer {
     grid-area: z-server;
 }
 
-#server > h2 {
+#server>h2 {
     text-align: center;
 }
 
@@ -454,7 +460,7 @@ thead th {
     margin-right: 0.3em;
 }
 
-address > ul > li {
+address>ul>li {
     padding-top: 1em;
 }
 
@@ -462,19 +468,19 @@ address > ul > li {
     padding-top: 1em;
 }
 
-#contact ul li a{
+#contact ul li a {
     transition: 0;
     font-size: 1em;
 }
 
-#logo2{
+#logo2 {
     width: 30%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-#copyright{
+#copyright {
     margin-left: auto;
     margin-right: auto;
     text-align: center;

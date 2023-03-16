@@ -1,92 +1,98 @@
-@media print{
+@media print {
 
-    #logo2{
+    #logo2 {
         width: 70%;
         border: var(--grosime-border) dotted black;
         position: absolute;
-        bottom:0;
+        bottom: 0;
         left: 15%;
     }
 
-    img, iframe, video, #acasa, #video-flex{
+    img,
+    iframe,
+    video,
+    #acasa,
+    #video-flex {
         visibility: none;
         display: none;
     }
 
-    #body{
-        padding: 0;
-        margin: 0;
-    }
-    #grid-pagina{
-        font-size: 10px;
-		box-sizing:border-box;
-        page-break-after: always;
-		background-color: white;
-		display:block;
+    #body {
         padding: 0;
         margin: 0;
     }
 
-    ul.meniu li ul{
+    #grid-pagina {
+        font-size: 10px;
+        box-sizing: border-box;
+        page-break-after: always;
+        background-color: white;
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.meniu li ul {
         display: none;
     }
-    .meniu{
-        
+
+    .meniu {
+
         page-break-after: always;
     }
 
-    footer{
+    footer {
         page-break-before: always;
     }
-    a{
+
+    a {
         text-decoration: none;
         color: black;
     }
 
-    #watermark
-    {
+    #watermark {
         display: block;
         position: fixed;
-        bottom:0;
-        color:rgba(0,0,0,0.4);
-        right:0;
-        
+        bottom: 0;
+        color: rgba(0, 0, 0, 0.4);
+        right: 0;
+
     }
-    #watermark::after{
-        
-        opacity:0.4;
-        padding:5px;
+
+    #watermark::after {
+
+        opacity: 0.4;
+        padding: 5px;
         display: block;
         background: white;
-        border:3px solid black;
-        border-top-left-radius:10px;
-        border-bottom-left-radius:10px;
-        border-right:none;
-        content:"Copyright Bogdan Comardici";
+        border: 3px solid black;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-right: none;
+        content: "Copyright Bogdan Comardici";
         width: 4cm;
         height: 1cm;
         font-size: 0.4cm;
     }
-
-    
-
 }
 
 @page {
     size: A4 portrait;
-    margin-bottom:2cm;
-    margin-top:2cm;
+    margin-bottom: 2cm;
+    margin-top: 2cm;
     counter-increment: page;
-        
-}
-@page:left{
 
-    margin-left:3cm;
-    margin-right:1cm;
+}
+
+@page: left {
+
+    margin-left: 3cm;
+    margin-right: 1cm;
     border-radius: 20cm;
 }
-@page:right{
 
-    margin-right:3cm;
-    margin-left:1cm;
+@page: right {
+
+    margin-right: 3cm;
+    margin-left: 1cm;
 }
