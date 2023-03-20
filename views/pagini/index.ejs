@@ -10,27 +10,12 @@
     <meta name="keywords" content="motocicleta, echipament, piese, casca, moto">
     <meta name="description" content="2roti - Magazin online de piese, accesorii si echipament pentru motociclete">
     
-    <%- include("../fragmente/head.ejs") %>
-    <script>
-
-        function afiseaza_meniu() {
-            var meniu = document.getElementById("meniu-container");
-
-            if (meniu.style.width === "100%") {
-                meniu.style.width = "0%";
-            } else {
-                meniu.style.width = "100%";
-                meniu.style.height = "fit-content";
-            }
-        }
-
-    </script>
-
+    <%- include("../fragmente/head.ejs"); %>
     
 </head>
 
 <body>
-    <%- include("../fragmente/header.ejs") %>
+    <%- include("../fragmente/header.ejs"); %>
 
     <main>
         <div id="grid-pagina">
@@ -64,10 +49,10 @@
                 <figure id="imagine_prezentare">
                     <picture>
                         <!--se va lua prima sursa care se potriveste-->
-                        <source media="(max-width: 600px)" srcset="resurse/front_small.jpg">
-                        <source media="(max-width: 1000px)" srcset="resurse/front_med.jpg">
-                        <source media="(max-width: 2000px)" srcset="resurse/front.jpg">
-                        <img id="img_store" src="resurse/front_small.jpg" alt="Store Front">
+                        <source media="(max-width: 600px)" srcset="/resurse/imagini/front_small.jpg">
+                        <source media="(max-width: 1000px)" srcset="/resurse/imagini/front_med.jpg">
+                        <source media="(max-width: 2000px)" srcset="/resurse/imagini/front.jpg">
+                        <img id="img_store" src="/resurse/imagini/front_small.jpg" alt="Store Front">
                     </picture>
 
                     <figcaption>Magazinul 2roti din Bucuresti</figcaption>
@@ -98,7 +83,7 @@
                     <p>
                         Lista completa a serviciilor noastre poate fi
                         descarcata de
-                        <a href="resurse/service.pdf" download="lista_servicii">aici</a>
+                        <a href="resurse/docs/service.pdf" download="lista_servicii">aici</a>
                     </p>
                 </section>
             </section>
@@ -333,7 +318,7 @@
     
     <div id="watermark"></div>
 
-    <%- include("../fragmente/footer.ejs") %>
+    <%- include("../fragmente/footer.ejs"); %>
 </body>
 
 </html>
