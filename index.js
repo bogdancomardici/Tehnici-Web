@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 
 obGlobal = {
     obErori: null,
@@ -12,10 +13,25 @@ console.log("Folder proiect:", __dirname);
 console.log("Cale fisier:", __filename);
 console.log("Director de lucru:", process.cwd());
 
-app.use("/resurse", express.static(__dirname + "/resurse"));
+vectorFoldere = ["temp", "temp1"];
 
-app.use(/\/resurse(\/((?=[0-9])|(?=[a-z])|(?=[A-Z])))*/, function (req, res) {
-    afisareEroare(res, 403);
+for(let folder of vectorFoldere){
+    // let caleFolder = __dirname + "/" + folder;
+    let caleFolder = path.join(__dirname, folder);
+    if(!fs.existsSync(caleFolder)){
+        fs.mkdirSync(caleFolder);
+    }
+}
+
+app.use("/resurse", express.static(path.join(__dirname, "/resurse")));
+
+app.use(/^\/resurse(\/[a-zA-Z0-9]*(?!\.)[a-zA-Z0-9]*)*$/, function (req, res) {
+    afiseazaEroare(res, 403);
+});
+
+app.get("/favicon.ico", function (req, res) {
+    // res.sendFile(__dirname + "/resurse/favicon/favicon.ico");
+    res.sendFile(path.join(__dirname, "/resurse/favicon/favicon.ico"));
 });
 
 // 01ABCD".match(/^[0-9A-Fa-f]+$/)
@@ -29,23 +45,43 @@ app.get(["/index", "/", "/home"], function (req, res) {
 
 });
 
+// app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {
+    app.get("/*.ejs", function (req, res) {
+        afiseazaEroare(res, 400);
+});
+
 app.get("/*", function (req, res) {
-    res.render("pagini" + req.url, function (err, rezRandare) {
-        if (err) {
-            if (err.message.startsWith("Failed to lookup view")) {
-                // afiseazaEroare(res, { _identificator: 404, _titlu: "Pagina nu a fost gasita", _text: "Pagina nu a fost gasita", _imagine: "/resurse/images/erori/lupa.jpg" });
-                afiseazaEroare(res, 404);
+    try {
+        res.render("pagini" + req.url, function (err, rezRandare) {
+            if (err) {
+                if (err.message.startsWith("Failed to lookup view")) {
+                    // afiseazaEroare(res, { _identificator: 404, _titlu: "Pagina nu a fost gasita", _text: "Pagina nu a fost gasita", _imagine: "/resurse/images/erori/lupa.jpg" });
+                    afiseazaEroare(res, 404);
+                }
             }
+            else {
+                afiseazaEroare(res);
+            }
+        });
+    }
+    catch (err) {
+        if (err.message.startsWith("Cannot find module")) {
+            afiseazaEroare(res, 404);
         }
         else {
             afiseazaEroare(res);
         }
-    });
+
+    }
+
 });
+
+
 
 function initErori() {
 
-    var continut = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf-8");
+    // var continut = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf-8");
+    var continut = fs.readFileSync(path.join(__dirname, "/resurse/json/erori.json")).toString("utf-8");
     obGlobal.obErori = JSON.parse(continut);
 
     let vErori = obGlobal.obErori.info_erori;
