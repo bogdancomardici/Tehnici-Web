@@ -193,6 +193,7 @@ footer {
     margin-top: 2em;
     padding: var(--padding_pagina);
     border-radius: 1em;
+    margin-bottom: 2em;
 }
 
 #casti {

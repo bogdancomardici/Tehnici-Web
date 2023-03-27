@@ -1,26 +1,28 @@
 <header>
     <!--Titlu-->
-    <img src="resurse/imagini/logo.png" alt="" id="logo2">
+    <img src="resurse/images/logo.png" alt="" id="logo2">
     <!-- <h1 id="sigla"><i><img src="resurse/bike-shadow.png" alt="" id ="logo"></i> 2Roti - Magazin Moto Online</h1> -->
 
     <!--meniu nav-->
 
     <%- include("../fragmente/head.ejs") %>
 
-    <script>
+        <script>
 
-        function afiseaza_meniu() {
-            var meniu = document.getElementById("meniu-container");
-
-            if (meniu.style.width === "100%") {
-                meniu.style.width = "0%";
-            } else {
-                meniu.style.width = "100%";
-                meniu.style.height = "fit-content";
+            function afiseaza_meniu() {
+                var meniu = document.getElementById("meniu-container");
+                console.log("test");
+                if (meniu.style.width === "100%") {
+                    meniu.style.width = "0%";
+                } else {
+                    meniu.style.width = "100%";
+                    meniu.style.height = "fit-content";
+                }
             }
-        }
 
-    </script>
+            
+
+        </script>
 </header>
 
 <nav id="nav">
@@ -45,6 +47,7 @@
                     <li><a href="#casti_open">Open Face</a></li>
                 </ul>
             </li>
+
             <li id="echipamente">
                 <div><i class="fa-solid fa-shield-halved"></i>Echipamente</div>
                 <ul>
