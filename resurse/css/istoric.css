@@ -25,3 +25,21 @@ figcaption{
     display: block;
     text-align: center;
 }
+
+#video{
+    min-width: 30%;
+    max-width: 50%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+::cue{
+    text-align: left;
+    background-color: var(--culoare_principala);
+    color: white;
+    display: block;
+    margin-bottom: 0;
+}
+

@@ -486,3 +486,46 @@ address>ul>li {
     margin-right: auto;
     text-align: center;
 }
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: var(--culoare_warning);
+}
+
+a.link_intern:active {
+    border: 1px solid var(--culoare_border);
+    transition: all 0.5s linear;
+}
+
+a.link_extern[href^="http"] {
+    color: black;
+    transition: color 0.35s linear;
+}
+
+a.link_extern[href^="http"]::before {
+    color: black;
+    content: "⮳";
+    font-size: 1.5em;
+    transition: color 0.35s linear;
+}
+
+a.link_extern[href^="http"]:hover::before {
+    color: var(--culoare_warning);
+    transition: color 0.35s linear;
+}
+
+a.link_intern {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(circle, rgba(252, 168, 8, 1) 0%, rgba(252, 168, 0, 1) 40%, rgba(252, 168, 0, 0) 80%, rgba(252, 168, 0, 0) 100%);
+    background-size: 0%;
+    transition: 0.5s all;
+}
+
+a.link_intern:hover {
+    background-size: 100%;
+    transition: 0.5s all;
+}
