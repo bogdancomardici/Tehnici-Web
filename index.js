@@ -45,6 +45,10 @@ app.get(["/index", "/", "/home"], function (req, res) {
 
 });
 
+app.get("/istoric", function (req, res) {
+    res.render("pagini/istoric.ejs");
+});
+
 // app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {
     app.get("/*.ejs", function (req, res) {
         afiseazaEroare(res, 400);

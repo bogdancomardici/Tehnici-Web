@@ -1,0 +1,27 @@
+#istoric{
+    border: var(--grosime-border) solid black;
+    background-color: white;
+    padding: var(--padding_pagina);
+    border-radius: 1em;
+    max-width: 100vw;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+        -0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+        -0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+        0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
+}
+
+img{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+figcaption{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
