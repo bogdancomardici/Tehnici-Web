@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const sharp = require("sharp");
 
 obGlobal = {
     obErori: null,
@@ -15,10 +16,10 @@ console.log("Director de lucru:", process.cwd());
 
 vectorFoldere = ["temp", "temp1"];
 
-for(let folder of vectorFoldere){
+for (let folder of vectorFoldere) {
     // let caleFolder = __dirname + "/" + folder;
     let caleFolder = path.join(__dirname, folder);
-    if(!fs.existsSync(caleFolder)){
+    if (!fs.existsSync(caleFolder)) {
         fs.mkdirSync(caleFolder);
     }
 }
@@ -41,7 +42,7 @@ app.get("/ceva", function (req, res) {
 
 app.get(["/index", "/", "/home"], function (req, res) {
     console.log(req.ip);
-    res.render("pagini/index.ejs", { ip: req.ip });
+    res.render("pagini/index.ejs", { ip: req.ip ,imagini: obGlobal.obImagini.imagini });
 
 });
 
@@ -50,8 +51,8 @@ app.get("/istoric", function (req, res) {
 });
 
 // app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {
-    app.get("/*.ejs", function (req, res) {
-        afiseazaEroare(res, 400);
+app.get("/*.ejs", function (req, res) {
+    afiseazaEroare(res, 400);
 });
 
 app.get("/*", function (req, res) {
@@ -80,8 +81,6 @@ app.get("/*", function (req, res) {
 
 });
 
-
-
 function initErori() {
 
     // var continut = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf-8");
@@ -95,6 +94,29 @@ function initErori() {
     for (let eroare of vErori) {
         eroare.imagine = "/" + obGlobal.obErori.cale_baza + "/" + eroare.imagine;
         console.log(eroare.imagine);
+    }
+}
+
+function initImagini() {
+
+    var continut = fs.readFileSync(path.join(__dirname, "/resurse/json/galerie.json")).toString("utf-8");
+    obGlobal.obImagini = JSON.parse(continut);
+
+    let vImagini = obGlobal.obImagini.imagini;
+
+    let caleAbs = path.join(__dirname, obGlobal.obImagini.cale_galerie);
+    let caleAbsMediu = path.join(caleAbs, "mediu");
+    
+    if(!fs.existsSync(caleAbsMediu)) {
+        fs.mkdirSync(caleAbsMediu);
+    }
+    for (let imag of vImagini) {
+        [nume_fisier, extensie] = imag.fisier.split(".");
+        imag.fisier_mediu = "/" + path.join(obGlobal.obImagini.cale_galerie, "mediu", nume_fisier + "_mediu" + ".webp");
+        let caleAbsFisMediu = path.join(__dirname, imag.fisier_mediu);
+        sharp(path.join(caleAbs, imag.fisier)).resize(400).toFile(caleAbsFisMediu);
+
+        imag.fisier = "/" + path.join(obGlobal.obImagini.cale_galerie, imag.fisier);
     }
 }
 
@@ -129,6 +151,7 @@ function afiseazaEroare(res, _identificator, _titlu = "titlu default", _text = "
 }
 
 initErori();
+initImagini();
 app.listen(8080);
 
 console.log("Serverul a pornit!");

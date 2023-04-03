@@ -17,7 +17,8 @@
             "z-utilizatori"
             "z-stats"
             "z-server"
-            "z-div";
+            "z-div"
+            "z-galerie";
         width: calc(100% - var(--page_spacing));
     }
 

@@ -195,7 +195,9 @@ footer {
     border-radius: 1em;
     margin-bottom: 2em;
 }
-
+#grid-galerie{
+    grid-area: z-galerie;
+}
 #casti {
     grid-area: z-casti;
 }
