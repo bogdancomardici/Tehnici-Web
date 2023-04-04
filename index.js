@@ -106,17 +106,30 @@ function initImagini() {
 
     let caleAbs = path.join(__dirname, obGlobal.obImagini.cale_galerie);
     let caleAbsMediu = path.join(caleAbs, "mediu");
+    let caleAbsMic = path.join(caleAbs, "mic");
     
     if(!fs.existsSync(caleAbsMediu)) {
         fs.mkdirSync(caleAbsMediu);
     }
+
+    if(!fs.existsSync(caleAbsMic)) {
+        fs.mkdirSync(caleAbsMic);
+    }
+
     for (let imag of vImagini) {
         [nume_fisier, extensie] = imag.fisier.split(".");
+
         imag.fisier_mediu = "/" + path.join(obGlobal.obImagini.cale_galerie, "mediu", nume_fisier + "_mediu" + ".webp");
+        imag.fisier_mic = "/" + path.join(obGlobal.obImagini.cale_galerie, "mic", nume_fisier + "_mic" + ".webp");
+
         let caleAbsFisMediu = path.join(__dirname, imag.fisier_mediu);
-        sharp(path.join(caleAbs, imag.fisier)).resize(400).toFile(caleAbsFisMediu);
+        let caleAbsFisMic = path.join(__dirname, imag.fisier_mic);
+
+        sharp(path.join(caleAbs, imag.fisier)).resize(1000).toFile(caleAbsFisMediu);
+        sharp(path.join(caleAbs, imag.fisier)).resize(400).toFile(caleAbsFisMic);
 
         imag.fisier = "/" + path.join(obGlobal.obImagini.cale_galerie, imag.fisier);
+
     }
 }
 
