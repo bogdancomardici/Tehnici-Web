@@ -3,6 +3,23 @@ const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
 const sass = require("sass");
+const { Client } = require("pg");
+const { Console } = require("console");
+
+var client= new Client({database:"douaroti",
+        user:"bogdan",
+        password:"tw2023pa55",
+        host:"localhost",
+        port:5432});
+client.connect();
+
+client.query("select * from produse_test", function(err, rez){
+    console.log("Eroare BD",err);
+ 
+    console.log("Rezultat BD",rez.rows);
+});
+
+
 
 obGlobal = {
     obErori: null,
@@ -134,8 +151,8 @@ function initImagini() {
         let caleAbsFisMediu = path.join(__dirname, imag.fisier_mediu);
         let caleAbsFisMic = path.join(__dirname, imag.fisier_mic);
 
-        sharp(path.join(caleAbs, imag.fisier)).resize(1000).toFile(caleAbsFisMediu);
-        sharp(path.join(caleAbs, imag.fisier)).resize(400).toFile(caleAbsFisMic);
+        sharp(path.join(caleAbs, imag.fisier)).resize(1000, 1000).toFile(caleAbsFisMediu);
+        sharp(path.join(caleAbs, imag.fisier)).resize(300, 300).toFile(caleAbsFisMic);
 
         imag.fisier = "/" + path.join(obGlobal.obImagini.cale_galerie, imag.fisier);
 
@@ -203,6 +220,17 @@ function compileazaScss(caleScss, caleCss) {
 initErori();
 initImagini();
 compileazaScss("a.scss");
+
+vFisiere = fs.readdirSync(obGlobal.folderScss);
+console.log("fisiere:");
+console.log(vFisiere);
+
+for(let numeFis of vFisiere){
+    if(path.extname(numeFis) === ".scss"){
+        compileazaScss(numeFis);
+    }
+}
+
 fs.watch(obGlobal.folderScss, function (event, filename) {
     console.log(event, filename);
     if(event === "change" || event === "rename") {
