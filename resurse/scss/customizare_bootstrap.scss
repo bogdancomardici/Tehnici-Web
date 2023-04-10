@@ -1,0 +1,11 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with
+(
+    $primary: red,
+    $secondary: green
+);
+
+body{
+    font-family: "Raleway", sans-serif
+}
+
+

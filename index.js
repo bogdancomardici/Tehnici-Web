@@ -2,19 +2,28 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
+const sass = require("sass");
 
 obGlobal = {
     obErori: null,
     obImagini: null,
+    folderScss: path.join(__dirname, "resurse/scss"),
+    folderCss: path.join(__dirname, "resurse/css"),
+    folderBackup: path.join(__dirname, "backup")
 };
+
 app = express();
+app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
+app.use("/resurse", express.static(path.join(__dirname, "resurse")));
+
+
 app.set("view engine", "ejs");
 
 console.log("Folder proiect:", __dirname);
 console.log("Cale fisier:", __filename);
 console.log("Director de lucru:", process.cwd());
 
-vectorFoldere = ["temp", "temp1"];
+vectorFoldere = ["temp", "temp1", "backup"];
 
 for (let folder of vectorFoldere) {
     // let caleFolder = __dirname + "/" + folder;
@@ -24,7 +33,7 @@ for (let folder of vectorFoldere) {
     }
 }
 
-app.use("/resurse", express.static(path.join(__dirname, "/resurse")));
+
 
 app.use(/^\/resurse(\/[a-zA-Z0-9]*(?!\.)[a-zA-Z0-9]*)*$/, function (req, res) {
     afiseazaEroare(res, 403);
@@ -163,8 +172,46 @@ function afiseazaEroare(res, _identificator, _titlu = "titlu default", _text = "
     }
 }
 
+function compileazaScss(caleScss, caleCss) {
+
+    if(!caleCss){
+    let vectorCale = caleScss.split("\\");
+    let numeFisierExt = vectorCale[vectorCale.length - 1];
+    let numeFis = numeFisierExt.split(".")[0];
+    caleCss = numeFis + ".css";
+    }
+    if(!path.isAbsolute(caleScss)) {
+        caleScss = path.join(obGlobal.folderScss, caleScss);
+    }
+
+    if(!path.isAbsolute(caleCss)) {
+        caleCss = path.join(obGlobal.folderCss, caleCss);
+    }
+
+    let vectorCale = caleCss.split("\\");
+    let numeFisCss = vectorCale[vectorCale.length - 1];
+    console.log(numeFisCss);
+    if(fs.existsSync(caleCss)){
+        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeFisCss));
+    }
+
+    rez = sass.compile(caleScss, {"sourceMap": true});
+    fs.writeFileSync(caleCss, rez.css);
+    console.log("Compilare SCSS", rez);
+}
+
 initErori();
 initImagini();
+compileazaScss("a.scss");
+fs.watch(obGlobal.folderScss, function (event, filename) {
+    console.log(event, filename);
+    if(event === "change" || event === "rename") {
+        let caleCompleta = path.join(obGlobal.folderScss, filename);
+        if(fs.existsSync(caleCompleta)) {
+            compileazaScss(caleCompleta);
+        }
+    }
+});
 app.listen(8080);
 
 console.log("Serverul a pornit!");

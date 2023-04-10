@@ -531,3 +531,7 @@ a.link_intern:hover {
     background-size: 100%;
     transition: 0.5s all;
 }
+
+div{
+    font-weight: normal;
+}
