@@ -1,0 +1,34 @@
+<!--galerie statica-->
+<link rel="stylesheet" href="/resurse/css/galerie-statica.css" type="text/css">
+<link rel="stylesheet" href="/resurse/css/galerie-statica-500.css" type="text/css" media="screen and (max-width:500px)">
+
+<div id="grid-galerie">
+    <% var i = 0; %>
+    <% for (let imag of locals.imagini) { %>
+        <% var d_vara = new Date("July 13, 2014 11:13:00") %>
+        <% var d = new Date(); %>
+        <% var anotimp = ""; %>
+
+        <% if(d.getMonth() >= 3 && d.getMonth() <= 5) { anotimp = "primavara"; }%>
+        <% if(d.getMonth() >= 6 && d.getMonth() <= 8) { anotimp = "vara"; }%>
+        <% if(d.getMonth() >= 9 && d.getMonth() <= 11) { anotimp = "toamna"; }%>
+        <% if(d.getMonth() == 0 || d.getMonth() == 1 || d.getMonth() == 2) { anotimp = "iarna"; }%>
+            
+        <% if(imag.anotimp && imag.anotimp == anotimp) { %>
+        <% i = i + 1; %>
+        <% if(i >= 10) { break; }%>
+
+        <figure>
+            <picture>
+                <source srcset="<%- imag.fisier_mic %>" media="(max-width:500px)" />
+                <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
+                <img src="<%- imag.fisier %>" alt="imagine">
+            </picture>
+            <figcaption><%- imag.descriere %></figcaption>
+        </figure>
+
+        <div id = "gol"></div>
+        <div id = "gol2"></div>
+        <% } %>
+            <% } %>
+</div>
