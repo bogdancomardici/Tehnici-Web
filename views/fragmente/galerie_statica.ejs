@@ -1,11 +1,12 @@
 <!--galerie statica-->
 <link rel="stylesheet" href="/resurse/css/galerie-statica.css" type="text/css">
-<link rel="stylesheet" href="/resurse/css/galerie-statica-500.css" type="text/css" media="screen and (max-width:500px)">
+<link rel="stylesheet" href="/resurse/css/galerie-statica-1400.css" type="text/css" media="screen and (max-width:1400px)">
+<link rel="stylesheet" href="/resurse/css/galerie-statica-700.css" type="text/css" media="screen and (max-width:700px)">
+
 
 <div id="grid-galerie">
     <% var i = 0; %>
-    <% for (let imag of locals.imagini) { %>
-        <% var d_vara = new Date("July 13, 2014 11:13:00") %>
+    <% var d_vara = new Date("July 13, 2014 11:13:00") %>
         <% var d = new Date(); %>
         <% var anotimp = ""; %>
 
@@ -13,22 +14,27 @@
         <% if(d.getMonth() >= 6 && d.getMonth() <= 8) { anotimp = "vara"; }%>
         <% if(d.getMonth() >= 9 && d.getMonth() <= 11) { anotimp = "toamna"; }%>
         <% if(d.getMonth() == 0 || d.getMonth() == 1 || d.getMonth() == 2) { anotimp = "iarna"; }%>
-            
+    <% for (let imag of locals.imagini) { %>
+        
+        <% var nume_imag = imag.fisier.split('\\'); %>
+        <% nume_imag = nume_imag[nume_imag.length - 1]; %>
         <% if(imag.anotimp && imag.anotimp == anotimp) { %>
         <% i = i + 1; %>
         <% if(i >= 10) { break; }%>
 
         <figure>
             <picture>
-                <source srcset="<%- imag.fisier_mic %>" media="(max-width:500px)" />
-                <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
-                <img src="<%- imag.fisier %>" alt="imagine">
+                <source srcset="<%- imag.fisier_mic %>" media="(max-width:700px)" />
+                <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1400px)" />
+                <div id="img-container"><img src="<%- imag.fisier %>" alt= " <%- imag.alt || nume_imag %> "></div>
             </picture>
-            <figcaption><%- imag.descriere %></figcaption>
+            <figcaption><%- imag.attribution || imag.descriere %></figcaption>
         </figure>
 
         <div id = "gol"></div>
         <div id = "gol2"></div>
         <% } %>
             <% } %>
+
+            
 </div>

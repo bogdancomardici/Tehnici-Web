@@ -1,42 +1,64 @@
+
 #grid-galerie {
- display:grid;
- grid-template-columns: repeat(3,1fr);
- grid-template-areas: ". . . "
-". z-gol ."
-". . ."
-". . ."
-". z-gol2 ."
-". . .";
- grid-row-gap:0.5em;
- grid-column-gap:0.5em;
- counter-reset: nrimag 3;  /* nrimag=3 */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        ". . . "
+        ". z-gol ."
+        ". . ."
+        ". . ."
+        ". z-gol2 ."
+        ". . .";
+    grid-row-gap: 0.5em;
+    grid-column-gap: 0.5em;
+    counter-reset: nrimag 0; /* nrimag=3 */
 }
 
-#grid-galerie figure{
-  padding: 1em;
-}
-#grid-galerie img{
-  width: 100%;
-}
-#grid-galerie figcaption{
-  text-align:center;
-  counter-increment: nrimag 2; /* nrimag+=2 */
+#grid-galerie figure {
+    padding: 1em;
+    overflow: hidden;
 }
 
-#grid-galerie figcaption::before{
-  content: counter(nrimag, upper-alpha) ")";
+#grid-galerie img {
+    width: 100%;
+    max-width: 100%;
+    transition: all 0.13s;
 }
 
-#gol{
-  grid-area: z-gol;
+#img-container {
+    overflow: hidden;
+    transition: all 0.13s;
 }
 
-#gol2{
-  grid-area: z-gol2;
+#img-container:hover{
+  border-radius: 15px;
+  transition: all 0.13s;
 }
 
-@media screen and (max-width:500px){
-  #grid-galerie {
-      display:block;
-  }
+#grid-galerie img:hover {
+    opacity: 0.7;
+    transform: scale(1.4);
+    transform-origin: top center;
+    transition: all 0.13s;
 }
+
+#grid-galerie figcaption {
+    text-align: center;
+    counter-increment: nrimag 1; /* nrimag+=2 */
+}
+
+#grid-galerie figcaption::before {
+    content: counter(nrimag, lower-roman) ")";
+}
+
+#gol {
+    grid-area: z-gol;
+}
+
+#gol2 {
+    grid-area: z-gol2;
+}
+
+
+
+
