@@ -1,0 +1,49 @@
+#imagine{
+	position:relative;
+	background-image: url("/resurse/images/atelier.jpg");
+	background-size:cover;
+	width:500px; 
+	height: 500px;
+	filter:brightness(200%) grayscale(0) ;
+	transition:all 2s linear;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    
+    border: var(--grosime-border) solid black;
+    border-radius: 1em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+        -0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+        -0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+        0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
+}
+
+#imagine:after, #imagine:before{
+	content:" ";
+	position:absolute;
+	height:100%;
+	width:100%;	
+	transition:all 2s linear;
+}
+
+#imagine:after{
+	background-color:#d4243c;
+	mix-blend-mode:lighten;
+    top: 0;
+    right: -100%;
+}
+
+#imagine:before{
+	background-color:#647484;
+	mix-blend-mode:darken;
+    left: -100%;
+}
+
+#imagine:hover:after{
+    right: 0;
+}
+
+#imagine:hover:before{
+    left: 0;
+}

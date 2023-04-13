@@ -1,0 +1,47 @@
+@keyframes wave {
+
+    0% {
+        background: repeating-radial-gradient(circle at 50%, #333, #333 3px, #e07e07 3px, #e07e07 6px);
+        background-size: 85% 65%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    100% {
+        background: repeating-radial-gradient(circle at 50%, #e07e07, #e07e07 3px, #333 3px, #333 6px);
+        background-size: 85% 65%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+}
+#text-reflectat{
+	position:absolute;
+	left:0;
+	top:100%;
+	transform-origin:0 0;
+	/*conetaza ordinea transformarilor!*/
+	transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px,-25px); 
+	opacity:0.55;
+    background: repeating-radial-gradient(circle at 50%, #333, #333 3px, #e07e07 3px, #e07e07 6px);
+    background-size: 85% 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#text-reflectat:hover{
+    background: repeating-radial-gradient(circle at 50%, #e07e07, #e07e07 3px, #333 3px, #333 6px);
+    background-size: 85% 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: wave 0.2s linear infinite;
+}
+#text{	
+	position:relative;
+}
+
+#text, #text-reflectat{
+	font-size:50px;
+	line-height:50px;
+	font-weight: bold;
+    margin-bottom: 1em;
+}
