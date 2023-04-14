@@ -59,7 +59,7 @@
     grid-area: z-gol2;
 }
 
-#grid-galerie{
+#grid-galerie, #reflexie-container, #container-animat{
     border: var(--grosime-border) solid black;
     background-color: white;
     padding: var(--padding_pagina);
@@ -70,6 +70,12 @@
         -0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
         0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
 }
+
+#reflexie-container{
+    margin-bottom: 1em;
+}
+
+
 
 
 

@@ -1,0 +1,25 @@
+#container-animat{
+    width: 100%;
+    margin-bottom: 1em;
+}
+.container-scroll {
+    width: 100%;
+    margin: auto;
+    overflow-x: hidden;
+  }
+  
+  .text-scroll {
+    font-weight: bold;
+    color: black;
+    animation: scroll-dr-st 10s linear infinite;
+  }
+  
+  @keyframes scroll-dr-st {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-80%);
+    }
+  }
+  
