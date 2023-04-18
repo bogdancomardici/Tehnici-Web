@@ -36,4 +36,10 @@
         margin: auto;
         width: 1em;
     }
+
+    #galanim{
+        display: none;
+    }
 }
+
+

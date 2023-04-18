@@ -1,4 +1,4 @@
-$nrImg: 7;
+$nrImg: 9;
 .galerie_animata {
 	margin-left: auto;
 	margin-right: auto;
@@ -49,7 +49,7 @@ $nrImg: 7;
 	  	}
 }
 
-@for $i from 1 through $nrImg {
+@for $i from 0 through $nrImg {
     #galanim figure:nth-child(#{$i}) {
         animation-delay: 3s * $i;
     }
@@ -60,20 +60,34 @@ $nrImg: 7;
 	background: transparent;
 }
 
-$timp_ascundere: calc(3 / $nrImg * 100%);
-$timp_ascundere_01: calc($timp_ascundere + 0.1%);
-$timp_ascundered2: calc($timp_ascundere / 2);
-$timp_aparitie: calc(100% - $timp_ascundere);
-$timp_aparitie_01: calc($timp_aparitie + 0.1%);
+// a=presentation time for one image
+// b=duration for cross fading
+// Total animation-duration is of course t=(a+b)*n
+
+// animation-delay = t/n or = a+b
+
+// Percentage for keyframes:
+
+// 0%
+// a/t*100%
+// (a+b)/t*100% = 1/n*100%
+// 100%-(b/t*100%)
+// 100%
+
+$start: calc(1.5 / ($nrImg * 3) * 100%);
+$startp1: calc(1.5 / ($nrImg * 3) * 100% + 5%);
+$mid: calc(3 / ($nrImg * 3) * 100%);
+$end: calc(100% - (1.5 / ($nrImg * 3) * 100%));
+
 
 @keyframes gal_exemplu{ 
-	0% {z-index:11;opacity:1; clip-path: circle(75%);} 
-	7%{opacity:1;} 
-	8%{clip-path: circle(25%); transform: rotate(0deg);}
-	10%{transform: rotate(360deg); clip-path: circle(0%); opacity: 0;}
-	16%{transform: rotate(0deg);}
-	17%{z-index:0;}
-	100%{opacity:1;z-index:0;}
-	
+
+	0% { opacity: 1; clip-path: circle(75%); transform: rotate(0deg);}
+	#{$start} { opacity: 1; clip-path: circle(25%); transform: rotate(0deg);}
+	#{$startp1} { opacity: 0; clip-path: circle(0%); transform: rotate(360deg);}
+	#{$mid} { opacity: 0; transform: rotate(0deg);}
+	#{$end} { opacity: 0;}
+	100% { opacity: 1;}
+
 }
 
