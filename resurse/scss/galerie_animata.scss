@@ -1,8 +1,9 @@
-$nrImg: 9;
+$nrImg: 7;
 .galerie_animata {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1em;
+	width: 30%;
 	figcaption {
 		position: absolute;
 		bottom: 0;
@@ -25,6 +26,7 @@ $nrImg: 9;
 			object-fit: cover;
 		}
 	}
+	
 }
 #galanim {
 	figure {
@@ -37,7 +39,7 @@ $nrImg: 9;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
 		animation-fill-mode: forwards;
-		animation-duration: calc(3s * $nrImg);
+		animation-duration: calc(2s * $nrImg);
 		transform-origin: center;
 	}
 		:hover {
@@ -51,7 +53,7 @@ $nrImg: 9;
 
 @for $i from 0 through $nrImg {
     #galanim figure:nth-child(#{$i}) {
-        animation-delay: 3s * $i;
+        animation-delay: 2s * $i;
     }
 }
 
@@ -74,20 +76,25 @@ $nrImg: 9;
 // 100%-(b/t*100%)
 // 100%
 
-$start: calc(1.5 / ($nrImg * 3) * 100%);
-$startp1: calc(1.5 / ($nrImg * 3) * 100% + 5%);
-$mid: calc(3 / ($nrImg * 3) * 100%);
-$end: calc(100% - (1.5 / ($nrImg * 3) * 100%));
+$start: calc(1 / ($nrImg * 2) * 100%);
+$startp1: calc(1 / ($nrImg * 2) * 100% + 5%);
+$mid: calc(2 / ($nrImg * 2) * 100%);
+$end: calc(100% - (1 / ($nrImg * 2) * 100%));
+$endp1: calc($end + 1%);
 
 
 @keyframes gal_exemplu{ 
 
-	0% { opacity: 1; clip-path: circle(75%); transform: rotate(0deg);}
-	#{$start} { opacity: 1; clip-path: circle(25%); transform: rotate(0deg);}
-	#{$startp1} { opacity: 0; clip-path: circle(0%); transform: rotate(360deg);}
-	#{$mid} { opacity: 0; transform: rotate(0deg);}
-	#{$end} { opacity: 0;}
-	100% { opacity: 1;}
+	0% {z-index:11;opacity:1; clip-path: circle(75%);} 
+	7%{opacity:1;} 
+	8%{clip-path: circle(25%); transform: rotate(0deg);}
+	10%{transform: rotate(360deg); clip-path: circle(0%); opacity: 0;}
+	16%{transform: rotate(0deg);}
+	17%{z-index:0;}
+	100%{opacity:1;z-index:0;}
+
+	// de schimbat timing
 
 }
+
 

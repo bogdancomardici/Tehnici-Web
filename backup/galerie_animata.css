@@ -2,6 +2,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
+  width: 30%;
 }
 .galerie_animata figcaption {
   position: absolute;
@@ -35,7 +36,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
-  animation-duration: 27s;
+  animation-duration: 14s;
   transform-origin: center;
 }
 #galanim :hover {
@@ -51,39 +52,31 @@
 }
 
 #galanim figure:nth-child(1) {
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 
 #galanim figure:nth-child(2) {
-  animation-delay: 6s;
+  animation-delay: 4s;
 }
 
 #galanim figure:nth-child(3) {
-  animation-delay: 9s;
+  animation-delay: 6s;
 }
 
 #galanim figure:nth-child(4) {
-  animation-delay: 12s;
+  animation-delay: 8s;
 }
 
 #galanim figure:nth-child(5) {
-  animation-delay: 15s;
+  animation-delay: 10s;
 }
 
 #galanim figure:nth-child(6) {
-  animation-delay: 18s;
+  animation-delay: 12s;
 }
 
 #galanim figure:nth-child(7) {
-  animation-delay: 21s;
-}
-
-#galanim figure:nth-child(8) {
-  animation-delay: 24s;
-}
-
-#galanim figure:nth-child(9) {
-  animation-delay: 27s;
+  animation-delay: 14s;
 }
 
 #spacer {
@@ -93,28 +86,30 @@
 
 @keyframes gal_exemplu {
   0% {
+    z-index: 11;
     opacity: 1;
     clip-path: circle(75%);
-    transform: rotate(0deg);
   }
-  5.5555555556% {
+  7% {
     opacity: 1;
+  }
+  8% {
     clip-path: circle(25%);
     transform: rotate(0deg);
   }
-  10.5555555556% {
-    opacity: 0;
-    clip-path: circle(0%);
+  10% {
     transform: rotate(360deg);
-  }
-  11.1111111111% {
+    clip-path: circle(0%);
     opacity: 0;
+  }
+  16% {
     transform: rotate(0deg);
   }
-  94.4444444444% {
-    opacity: 0;
+  17% {
+    z-index: 0;
   }
   100% {
     opacity: 1;
+    z-index: 0;
   }
 }
