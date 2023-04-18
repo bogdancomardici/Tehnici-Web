@@ -17,24 +17,48 @@
 <body>
     <%- include("../fragmente/header.ejs"); %>
 
-        
+
         <main>
-                <div id="reflexie-container">
+            <div id="reflexie-container">
                 <div id="text">
                     Galerie
                     <div id="text-reflectat">Galerie</div>
                     <div id="animatie-reflexie"></div>
                 </div>
-                </div>
+            </div>
 
-                <div id="container-animat">
-                    <div class="container-scroll">
-                        <p class="text-scroll">2roti - Magazin Moto Online</p>
-                      </div>
+            <div id="container-animat">
+                <div class="container-scroll">
+                    <p class="text-scroll">2roti - Magazin Moto Online</p>
                 </div>
-                <%- include("../fragmente/galerie_statica.ejs"); %>
+            </div>
+            <%- include("../fragmente/galerie_statica.ejs"); %>
 
                 <div id="imagine"></div>
+
+                <div class="galerie_animata" id="galanim" style="--nrImg: <% locals.nrImagini %>">
+
+                    <% var i=0; %>
+                        <% for (let imag of locals.imgInv) { %>
+                            <% i=i + 1; %>
+                                <% if(i> locals.nrImagini) { break; }%>
+
+                                    <% var nume_imag=imag.fisier.split('\\'); %>
+                                        <% nume_imag=nume_imag[nume_imag.length - 1]; %>
+
+                                            <figure>
+                                                <picture>
+                                                    <source srcset="<%- imag.fisier_mic %>" media="(max-width:700px)" />
+                                                    <source srcset="<%- imag.fisier_mediu %>"
+                                                        media="(max-width:1400px)" />
+                                                    <img src="<%- imag.fisier %>" alt=" <%- imag.alt || nume_imag %> ">
+                                                </picture>
+                                                <figcaption><%- imag.attribution || imag.descriere %></figcaption>
+                                            </figure>
+
+                                            <% } %>
+                                                <div id="spacer"></div>
+                </div>
         </main>
 
         <div id="acasa" title="Acasa">

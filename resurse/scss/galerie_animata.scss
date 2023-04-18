@@ -1,0 +1,79 @@
+$nrImg: 7;
+.galerie_animata {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	figcaption {
+		position: absolute;
+		bottom: 0;
+		background: rgba(255,255,255,0.7);
+		width: 100%;
+		text-align: center;
+		overflow: hidden;
+	}
+	figure {
+		border: 0.5em solid;
+		border-image: url('/resurse/images/atelier.jpg') 30;
+		position: relative;
+		width: 30%;
+		height: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+#galanim {
+	figure {
+		
+		position: absolute;
+		left: 35%;
+		margin-bottom: 10em;
+		z-index: 0;
+		animation-name: gal_exemplu;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-fill-mode: forwards;
+		animation-duration: calc(3s * $nrImg);
+		transform-origin: center;
+	}
+		:hover {
+		-webkit-animation-play-state:paused;
+		-moz-animation-play-state:paused;
+		-o-animation-play-state:paused;
+		animation-play-state:paused;
+		cursor: pointer;
+	  	}
+}
+
+@for $i from 1 through $nrImg {
+    #galanim figure:nth-child(#{$i}) {
+        animation-delay: 3s * $i;
+    }
+}
+
+#spacer {
+	height: 20em;
+	background: transparent;
+}
+
+$timp_ascundere: calc(3 / $nrImg * 100%);
+$timp_ascundere_01: calc($timp_ascundere + 0.1%);
+$timp_ascundered2: calc($timp_ascundere / 2);
+$timp_aparitie: calc(100% - $timp_ascundere);
+$timp_aparitie_01: calc($timp_aparitie + 0.1%);
+
+@keyframes gal_exemplu{ 
+	0% {z-index:11;opacity:1; clip-path: circle(75%);} 
+	7%{opacity:1;} 
+	8%{clip-path: circle(25%); transform: rotate(0deg);}
+	10%{transform: rotate(360deg); clip-path: circle(0%); opacity: 0;}
+	16%{transform: rotate(0deg);}
+	17%{z-index:0;}
+	100%{opacity:1;z-index:0;}
+	
+}
+

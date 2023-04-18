@@ -5,6 +5,7 @@ const sharp = require("sharp");
 const sass = require("sass");
 const { Client } = require("pg");
 const { Console } = require("console");
+const { randomInt } = require("crypto");
 
 var client= new Client({database:"douaroti",
         user:"bogdan",
@@ -77,7 +78,21 @@ app.get("/istoric", function (req, res) {
 });
 
 app.get("/galerie", function (req, res) {
-    res.render("pagini/galerie.ejs", {imagini: obGlobal.obImagini.imagini});
+    let nrImagini = randomInt(5, 11);
+    if(nrImagini % 2 == 0)
+        nrImagini++;
+    
+    let imgInv = [...obGlobal.obImagini.imagini].reverse();
+
+    let fisScss = path.join(__dirname, "resurse/scss/galerie_animata.scss");
+    let liniiFisScss = fs.readFileSync(fisScss).toString().split('\n');
+
+    let stringImg = "$nrImg: "  + nrImagini + ";";
+    liniiFisScss.shift();
+    liniiFisScss.unshift(stringImg);
+    fs.writeFileSync(fisScss, liniiFisScss.join('\n'))
+
+    res.render("pagini/galerie.ejs", {imagini: obGlobal.obImagini.imagini, nrImagini: nrImagini, imgInv: imgInv});
 });
 
 // app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {

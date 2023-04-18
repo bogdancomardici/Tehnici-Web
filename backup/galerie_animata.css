@@ -1,0 +1,110 @@
+.galerie_animata {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+.galerie_animata figcaption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+.galerie_animata figure {
+  border: 0.5em solid;
+  border-image: url("/resurse/images/atelier.jpg") 30;
+  position: relative;
+  width: 30%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.galerie_animata figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#galanim figure {
+  position: absolute;
+  left: 35%;
+  margin-bottom: 10em;
+  z-index: 0;
+  animation-name: gal_exemplu;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-duration: 21s;
+  transform-origin: center;
+}
+#galanim :hover {
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -o-animation-play-state: paused;
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+#galanim figure:nth-child(1) {
+  animation-delay: 3s;
+}
+
+#galanim figure:nth-child(2) {
+  animation-delay: 6s;
+}
+
+#galanim figure:nth-child(3) {
+  animation-delay: 9s;
+}
+
+#galanim figure:nth-child(4) {
+  animation-delay: 12s;
+}
+
+#galanim figure:nth-child(5) {
+  animation-delay: 15s;
+}
+
+#galanim figure:nth-child(6) {
+  animation-delay: 18s;
+}
+
+#galanim figure:nth-child(7) {
+  animation-delay: 21s;
+}
+
+#spacer {
+  height: 20em;
+  background: transparent;
+}
+
+@keyframes gal_exemplu {
+  0% {
+    z-index: 11;
+    opacity: 1;
+    clip-path: circle(75%);
+  }
+  7% {
+    opacity: 1;
+  }
+  8% {
+    clip-path: circle(25%);
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(360deg);
+    clip-path: circle(0%);
+    opacity: 0;
+  }
+  16% {
+    transform: rotate(0deg);
+  }
+  17% {
+    z-index: 0;
+  }
+  100% {
+    opacity: 1;
+    z-index: 0;
+  }
+}
