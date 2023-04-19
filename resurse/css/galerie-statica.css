@@ -65,14 +65,47 @@
     padding: var(--padding_pagina);
     border-radius: 1em;
     max-width: 100vw;
-    box-shadow: 0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
-        -0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
-        -0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
-        0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
+    box-shadow: 0.05em 0.05em 0.05em 0.05em #e07e07 inset,
+        -0.05em -0.05em 0.05em 0.05em #e07e07 inset,
+        -0.05em 0.05em 0.05em 0.05em #e07e07 inset,
+        0.05em -0.05 0.05 0.05 #e07e07 inset;
 }
 
 #reflexie-container{
     margin-bottom: 1em;
+}
+
+hr{
+    border: none;
+    opacity: 1;
+    content: " ";
+    display: block;
+    height: 1em;
+    width: 100%;
+    background-color: #e07e07;
+    background: radial-gradient(circle, rgba(255,255,255,1) 44%, rgba(255,255,255,1) 55%, rgba(224,126,7,0) 100%);
+    background-size: 0.75em;
+    background-position: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    box-shadow: 0.05em 0.05em 0.05em 0.05em #e07e07 inset,
+        -0.05em -0.05em 0.05em 0.05em #e07e07 inset,
+        -0.05em 0.05em 0.05em 0.05em #e07e07 inset,
+        0.05em -0.05em 0.05em 0.05em #e07e07 inset;
+    overflow: visible;
+}
+
+hr::after{
+    background-image: url('/resurse/images/bike-shadow.png');
+    background-size: 3em 3em;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: -1.5em;
+    width: 3em; 
+    height: 3em;
+    content:"";
 }
 
 

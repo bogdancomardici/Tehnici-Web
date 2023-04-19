@@ -40,6 +40,10 @@
     #galanim{
         display: none;
     }
+
+    #anunturi{
+        column-count: 1;
+    }
 }
 
 

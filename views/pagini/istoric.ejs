@@ -9,12 +9,32 @@
     <!--tag-uri meta charset, keywords, author, description-->
     <meta name="keywords" content="motocicleta, echipament, piese, casca, moto">
     <meta name="description" content="2roti - Magazin online de piese, accesorii si echipament pentru motociclete">
-    <link rel="stylesheet" href="/resurse/css/istoric.css">
+    
     <%- include("../fragmente/head.ejs") %>
+    <link rel="stylesheet" href="/resurse/css/istoric.css">
 </head>
 
+<script>
+    // schimbam background-image la 5s
+    window.onload = function () {
+     
+      var backgroundImg=["/resurse/images/atelier.jpg",
+                            "/resurse/images/casca.jpg",
+                            "/resurse/images/front.jpg",
+                            "/resurse/images/magazin.jpg"
+                        ]
+
+        setInterval(changeImage, 5000);
+       function changeImage() {   
+        var i = Math.floor((Math.random() * 3));
+
+        document.body.style.backgroundImage = "url('"+backgroundImg[i]+"')";
+
+      }
+    }
+</script>
 <body>
-    <%- include("../fragmente/header.ejs") %>
+    <%- include("../fragmente/meniu.ejs") %>
 
         <main>
             <div id="istoric">

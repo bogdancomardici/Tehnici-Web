@@ -1,3 +1,9 @@
+body{
+    background-image: url(/resurse/images/magazin.jpg);
+    background-attachment: fixed;
+    transition: background-image 2s;
+}
+
 #istoric{
     border: var(--grosime-border) solid black;
     background-color: white;

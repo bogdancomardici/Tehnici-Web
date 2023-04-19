@@ -244,6 +244,8 @@ footer {
 
 #anunturi {
     grid-area: z-anunturi;
+    column-count: 2;
+    column-rule: 1px solid black;
 }
 
 #utilizatori {
@@ -534,4 +536,11 @@ a.link_intern:hover {
 
 div{
     font-weight: normal;
+}
+
+/* Schimbarea afișării implicite a textului selectat */
+
+p::selection {
+    background-color: var(--culoare_highlight);
+    color: black;
 }
