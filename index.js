@@ -7,17 +7,19 @@ const { Client } = require("pg");
 const { Console } = require("console");
 const { randomInt } = require("crypto");
 
-var client= new Client({database:"douaroti",
-        user:"bogdan",
-        password:"tw2023pa55",
-        host:"localhost",
-        port:5432});
+var client = new Client({
+    database: "douaroti",
+    user: "bogdan",
+    password: "tw2023pa55",
+    host: "localhost",
+    port: 5432
+});
 client.connect();
 
-client.query("select * from produse_test", function(err, rez){
-    console.log("Eroare BD",err);
- 
-    console.log("Rezultat BD",rez.rows);
+client.query("select * from produse_test", function (err, rez) {
+    console.log("Eroare BD", err);
+
+    console.log("Rezultat BD", rez.rows);
 });
 
 
@@ -69,7 +71,7 @@ app.get("/ceva", function (req, res) {
 
 app.get(["/index", "/", "/home"], function (req, res) {
     console.log(req.ip);
-    res.render("pagini/index.ejs", { ip: req.ip ,imagini: obGlobal.obImagini.imagini });
+    res.render("pagini/index.ejs", { ip: req.ip, imagini: obGlobal.obImagini.imagini });
 
 });
 
@@ -81,9 +83,9 @@ app.get("/galerie", function (req, res) {
 
     // la fiecare request al paginii generam un nr random de imagini
     let nrImagini = randomInt(5, 11);
-    if(nrImagini % 2 == 0)
+    if (nrImagini % 2 == 0)
         nrImagini++;
-    
+
     // vectorul cu imaginile de la sfarsit la inceput
     let imgInv = [...obGlobal.obImagini.imagini].reverse();
 
@@ -91,7 +93,7 @@ app.get("/galerie", function (req, res) {
     let fisScss = path.join(__dirname, "resurse/scss/galerie_animata.scss");
     let liniiFisScss = fs.readFileSync(fisScss).toString().split('\n');
 
-    let stringImg = "$nrImg: "  + nrImagini + ";";
+    let stringImg = "$nrImg: " + nrImagini + ";";
 
     // stergem prima linie ( cea cu nr vechi de imagini )
     liniiFisScss.shift();
@@ -103,7 +105,7 @@ app.get("/galerie", function (req, res) {
     // se va compila automat din functia compileaza_scss cand se schimba
     fs.writeFileSync(fisScss, liniiFisScss.join('\n'))
 
-    res.render("pagini/galerie.ejs", {imagini: obGlobal.obImagini.imagini, nrImagini: nrImagini, imgInv: imgInv});
+    res.render("pagini/galerie.ejs", { imagini: obGlobal.obImagini.imagini, nrImagini: nrImagini, imgInv: imgInv });
 });
 
 // app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {
@@ -163,12 +165,12 @@ function initImagini() {
     let caleAbs = path.join(__dirname, obGlobal.obImagini.cale_galerie);
     let caleAbsMediu = path.join(caleAbs, "mediu");
     let caleAbsMic = path.join(caleAbs, "mic");
-    
-    if(!fs.existsSync(caleAbsMediu)) {
+
+    if (!fs.existsSync(caleAbsMediu)) {
         fs.mkdirSync(caleAbsMediu);
     }
 
-    if(!fs.existsSync(caleAbsMic)) {
+    if (!fs.existsSync(caleAbsMic)) {
         fs.mkdirSync(caleAbsMic);
     }
 
@@ -221,51 +223,60 @@ function afiseazaEroare(res, _identificator, _titlu = "titlu default", _text = "
 
 function compileazaScss(caleScss, caleCss) {
 
-    if(!caleCss){
-    let vectorCale = caleScss.split("\\");
-    let numeFisierExt = vectorCale[vectorCale.length - 1];
-    let numeFis = numeFisierExt.split(".")[0];
-    caleCss = numeFis + ".css";
+    if (!caleCss) {
+        let vectorCale = caleScss.split("\\");
+        let numeFisierExt = vectorCale[vectorCale.length - 1];
+        let numeFis = numeFisierExt.split(".")[0];
+        caleCss = numeFis + ".css";
     }
-    if(!path.isAbsolute(caleScss)) {
+    if (!path.isAbsolute(caleScss)) {
         caleScss = path.join(obGlobal.folderScss, caleScss);
     }
 
-    if(!path.isAbsolute(caleCss)) {
+    if (!path.isAbsolute(caleCss)) {
         caleCss = path.join(obGlobal.folderCss, caleCss);
     }
 
     let vectorCale = caleCss.split("\\");
     let numeFisCss = vectorCale[vectorCale.length - 1];
-    console.log(numeFisCss);
-    if(fs.existsSync(caleCss)){
-        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeFisCss));
+    
+
+    let data_curenta = new Date();
+    let numeBackup = numeFisCss.split(".")[0] + "_" + data_curenta.toDateString().replace(" ", "_") + "_" + data_curenta.getHours() + "_" + data_curenta.getMinutes() + "_" + data_curenta.getSeconds() + ".css";
+    
+    fs.writeFileSync(path.join(obGlobal.folderBackup, numeBackup), "backup");
+
+
+    if (fs.existsSync(caleCss)) {
+        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeBackup));
     }
 
-    rez = sass.compile(caleScss, {"sourceMap": true});
+    rez = sass.compile(caleScss, { "sourceMap": true });
+    
+
     fs.writeFileSync(caleCss, rez.css);
-    console.log("Compilare SCSS", rez);
+
+    //console.log("Compilare SCSS", rez);
 }
 
 initErori();
 initImagini();
-compileazaScss("a.scss");
 
 vFisiere = fs.readdirSync(obGlobal.folderScss);
 console.log("fisiere:");
 console.log(vFisiere);
 
-for(let numeFis of vFisiere){
-    if(path.extname(numeFis) === ".scss"){
+for (let numeFis of vFisiere) {
+    if (path.extname(numeFis) === ".scss") {
         compileazaScss(numeFis);
     }
 }
 
 fs.watch(obGlobal.folderScss, function (event, filename) {
     console.log(event, filename);
-    if(event === "change" || event === "rename") {
+    if (event === "change" || event === "rename") {
         let caleCompleta = path.join(obGlobal.folderScss, filename);
-        if(fs.existsSync(caleCompleta)) {
+        if (fs.existsSync(caleCompleta)) {
             compileazaScss(caleCompleta);
         }
     }
