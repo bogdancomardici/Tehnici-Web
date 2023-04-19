@@ -78,18 +78,29 @@ app.get("/istoric", function (req, res) {
 });
 
 app.get("/galerie", function (req, res) {
+
+    // la fiecare request al paginii generam un nr random de imagini
     let nrImagini = randomInt(5, 11);
     if(nrImagini % 2 == 0)
         nrImagini++;
     
+    // vectorul cu imaginile de la sfarsit la inceput
     let imgInv = [...obGlobal.obImagini.imagini].reverse();
 
+    // citim fisierul scss si il impartim in linii
     let fisScss = path.join(__dirname, "resurse/scss/galerie_animata.scss");
     let liniiFisScss = fs.readFileSync(fisScss).toString().split('\n');
 
     let stringImg = "$nrImg: "  + nrImagini + ";";
+
+    // stergem prima linie ( cea cu nr vechi de imagini )
     liniiFisScss.shift();
+
+    // scriem pe prima linie numarul nou de imagini
     liniiFisScss.unshift(stringImg);
+
+    // scriem in fisierul scss
+    // se va compila automat din functia compileaza_scss cand se schimba
     fs.writeFileSync(fisScss, liniiFisScss.join('\n'))
 
     res.render("pagini/galerie.ejs", {imagini: obGlobal.obImagini.imagini, nrImagini: nrImagini, imgInv: imgInv});
