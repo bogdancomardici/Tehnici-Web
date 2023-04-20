@@ -377,7 +377,7 @@ p {
 }
 
 #orar th,
-td {
+#orar td {
     border: 1px solid var(--culoare_border);
     text-align: center;
     border-top: 0;
@@ -389,8 +389,8 @@ td {
 }
 
 #orar tbody tr:hover,
-thead tr:hover,
-tfoot tr:hover {
+#orar thead tr:hover,
+#orar tfoot tr:hover {
     outline: 5px solid rgba(233, 2, 22, 0.7);
     transition: 0.5s;
 }
@@ -404,7 +404,7 @@ tfoot tr:hover {
 }
 
 #orar tfoot,
-thead th {
+#orar thead th {
     height: 2em;
 }
 

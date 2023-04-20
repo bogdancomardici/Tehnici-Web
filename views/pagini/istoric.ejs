@@ -7,84 +7,180 @@
     <title>2roti</title>
 
     <!--tag-uri meta charset, keywords, author, description-->
-    <meta name="keywords" content="motocicleta, echipament, piese, casca, moto">
-    <meta name="description" content="2roti - Magazin online de piese, accesorii si echipament pentru motociclete">
-    
+    <meta name="keywords" content="motocicleta, echipament, piese, casca, moto" />
+    <meta name="description" content="2roti - Magazin online de piese, accesorii si echipament pentru motociclete" />
+
     <%- include("../fragmente/head.ejs") %>
-    <link rel="stylesheet" href="/resurse/css/istoric.css">
+        <link rel="stylesheet" href="/resurse/css/istoric.css" />
 </head>
 
 <script>
     // schimbam background-image la 5s
     window.onload = function () {
-     
-      var backgroundImg=["/resurse/images/atelier.jpg",
-                            "/resurse/images/casca.jpg",
-                            "/resurse/images/front.jpg",
-                            "/resurse/images/magazin.jpg"
-                        ]
+        var backgroundImg = [
+            "/resurse/images/atelier.jpg",
+            "/resurse/images/casca.jpg",
+            "/resurse/images/front.jpg",
+            "/resurse/images/magazin.jpg",
+        ];
 
         setInterval(changeImage, 5000);
-       function changeImage() {   
-        var i = Math.floor((Math.random() * 3));
+        function changeImage() {
+            var i = Math.floor(Math.random() * 3);
 
-        document.body.style.backgroundImage = "url('"+backgroundImg[i]+"')";
-
-      }
-    }
+            document.body.style.backgroundImage =
+                "url('" + backgroundImg[i] + "')";
+        }
+    };
 </script>
+
 <body>
     <%- include("../fragmente/meniu.ejs") %>
 
         <main>
             <div id="istoric">
                 <h2>Istoria magazinului nostru</h2>
-                <p>Magazinul de motociclete "2Roti" a fost fondat în anul 1978 de către pasionatul de motociclete
-                    John Smith. La început, magazinul a fost doar un mic atelier unde John repara și personaliza
-                    motocicletele pentru prietenii săi. Cu timpul, popularitatea sa a crescut și John și-a extins
-                    afacerea, deschizând un magazin mai mare în centrul orașului.
-
-                    În anii 80, 2Roti a devenit unul dintre cele mai populare magazine de motociclete din oraș, în
-                    special datorită atelierului de reparații bine-cunoscut al lui John și al personalului său
-                    experimentat. Magazinul a început să vândă și motociclete noi, îndeplinind astfel toate nevoile
-                    clienților săi.
-
-                    În anii 90, 2Roti a continuat să crească și să se dezvolte, adăugând noi linii de accesorii și
-                    echipamente de protecție la gama sa de produse. Magazinul a devenit un punct de întâlnire pentru
-                    comunitatea locală de motocicliști și a organizat adesea evenimente pentru pasionații de
+                <p>
+                    Magazinul de motociclete "2Roti" a fost fondat în anul 1978
+                    de către pasionatul de motociclete John Smith. La început,
+                    magazinul a fost doar un mic atelier unde John repara și
+                    personaliza motocicletele pentru prietenii săi. Cu timpul,
+                    popularitatea sa a crescut și John și-a extins afacerea,
+                    deschizând un magazin mai mare în centrul orașului. În anii
+                    80, 2Roti a devenit unul dintre cele mai populare magazine
+                    de motociclete din oraș, în special datorită atelierului de
+                    reparații bine-cunoscut al lui John și al personalului său
+                    experimentat. Magazinul a început să vândă și motociclete
+                    noi, îndeplinind astfel toate nevoile clienților săi. În
+                    anii 90, 2Roti a continuat să crească și să se dezvolte,
+                    adăugând noi linii de accesorii și echipamente de protecție
+                    la gama sa de produse. Magazinul a devenit un punct de
+                    întâlnire pentru comunitatea locală de motocicliști și a
+                    organizat adesea evenimente pentru pasionații de
                     motociclete.
-
                 </p>
                 <figure>
-                    <img src="/resurse/images/atelier.jpg" alt="atelier">
+                    <img src="/resurse/images/atelier.jpg" alt="atelier" />
                     <figcaption>Atelierul nostru</figcaption>
                 </figure>
 
                 <p>
-
-                    În prezent, 2Roti este încă unul dintre cele mai populare magazine de motociclete din oraș,
-                    iar John Smith rămâne un nume bine-cunoscut în comunitatea de motocicliști. Magazinul oferă o gamă
-                    largă de motociclete, accesorii și echipamente de protecție de calitate, precum și servicii de
-                    reparații și întreținere pentru toate tipurile de motociclete.
-
-                    De-a lungul anilor, 2Roti a rămas fidel valorilor și pasiunii sale originale pentru
-                    motociclete și comunitatea de motocicliști. Cu o echipă dedicată și o pasiune continuă pentru acest
-                    sport, 2Roti este pregătit să servească clienții săi cu cele mai bune produse și servicii
-                    pentru mulți ani de acum încolo.</p>
+                    În prezent, 2Roti este încă unul dintre cele mai populare
+                    magazine de motociclete din oraș, iar John Smith rămâne un
+                    nume bine-cunoscut în comunitatea de motocicliști. Magazinul
+                    oferă o gamă largă de motociclete, accesorii și echipamente
+                    de protecție de calitate, precum și servicii de reparații și
+                    întreținere pentru toate tipurile de motociclete. De-a
+                    lungul anilor, 2Roti a rămas fidel valorilor și pasiunii
+                    sale originale pentru motociclete și comunitatea de
+                    motocicliști. Cu o echipă dedicată și o pasiune continuă
+                    pentru acest sport, 2Roti este pregătit să servească
+                    clienții săi cu cele mai bune produse și servicii pentru
+                    mulți ani de acum încolo.
+                </p>
 
                 <video controls poster="/resurse/images/casca.jpg" preload="metadata" id="video">
-                    <source src="/resurse/video/casca.mp4" type="video/mp4">
-                    <source src="/resurse/video/casca.ogv" type="video/ogv">
-                    <track label="Romanian" kind="subtitles" srclang="ro" src="/resurse/subtitles/sub-ro.vtt" default>
-                    <track label="English" kind="subtitles" srclang="en" src="/resurse/subtitles/sub-en.vtt">
+                    <source src="/resurse/video/casca.mp4" type="video/mp4" />
+                    <source src="/resurse/video/casca.ogv" type="video/ogv" />
+                    <track label="Romanian" kind="subtitles" srclang="ro" src="/resurse/subtitles/sub-ro.vtt" default />
+                    <track label="English" kind="subtitles" srclang="en" src="/resurse/subtitles/sub-en.vtt" />
                 </video>
-
             </div>
 
+            <div id="echipa">
+                <h2 class="h2tabel">Echipa noastra</h2>
+
+                <table id="tabel-echipa">
+                    <tr>
+                        <td>Popescu</td>
+                        <td>Andrei</td>
+                        <td>Mecanic Sef</td>
+                        <td>14 ani</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ionescu</td>
+                        <td>Ion</td>
+                        <td>Mecanic</td>
+                        <td>10 ani</td>
+                    </tr>
+
+                    <tr>
+                        <td>Dragomir</td>
+                        <td>Dragos</td>
+                        <td>Mecanic</td>
+                        <td>8 ani</td>
+                    </tr>
+
+                    <tr>
+                        <td>Popa</td>
+                        <td>Andrei</td>
+                        <td>Specialist Echipament</td>
+                        <td>6 ani</td>
+                    </tr>
+
+                    <tr>
+                        <td>Lupu</td>
+                        <td>Alexia</td>
+                        <td>Specialist Piese</td>
+                        <td>6 ani</td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Ursu</td>
+                        <td>George</td>
+                        <td>Manager Vanzari</td>
+                        <td>6 ani</td>
+                    </tr>
+
+                    <tr>
+                        <td>Pop</td>
+                        <td>Andreea</td>
+                        <td>Manager</td>
+                        <td>6 ani</td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <div id="angajat">
+                <h2>Angajatul lunii</h2>
+                <table id="angajatul-lunii">
+                    <thead>
+                        <tr>
+                            <th>Angajatul</th>
+                            <th>Luna</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Popescu Andrei</td>
+                            <td>Octombrie</td>
+                        </tr>
+
+                        <tr>
+                            <td>Popa Andrei</td>
+                            <td>Noiembrie</td>
+                        </tr>
+
+                        <tr>
+                            <td>Pop Andreea</td>
+                            <td>Decembrie</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Popescu Andrei</td>
+                            <td>Ianuarie</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </main>
-
-
-
 
         <%- include("../fragmente/footer.ejs") %>
 </body>
