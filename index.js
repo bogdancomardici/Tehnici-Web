@@ -12,7 +12,7 @@ var client = new Client({
     user: "bogdan",
     password: "tw2023pa55",
     host: "localhost",
-    port: 5432
+    port: 5432,
 });
 client.connect();
 
@@ -22,20 +22,18 @@ client.query("select * from produse_test", function (err, rez) {
     console.log("Rezultat BD", rez.rows);
 });
 
-
-
 obGlobal = {
     obErori: null,
     obImagini: null,
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
-    folderBackup: path.join(__dirname, "backup")
+    folderBackup: path.join(__dirname, "backup"),
+    optiuniMeniu: []
 };
 
 app = express();
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
-
 
 app.set("view engine", "ejs");
 
@@ -53,8 +51,6 @@ for (let folder of vectorFoldere) {
     }
 }
 
-
-
 app.use(/^\/resurse(\/[a-zA-Z0-9]*(?!\.)[a-zA-Z0-9]*)*$/, function (req, res) {
     afiseazaEroare(res, 403);
 });
@@ -69,10 +65,65 @@ app.get("/ceva", function (req, res) {
     res.send("altceva");
 });
 
+// Produse
+
+client.query("select * from unnest(enum_range(null::tipuri_casca)", function (err, rezTip) {
+    if (err)
+        console.log(err);
+    else
+        obGlobal.optiuniMeniu = rezTip.rows;
+});
+
+app.use("/*", function (req, res, next) {
+    res.locals.optiuniMeniu = obGlobal.optiuniMeniu;
+    next();
+});
+
+app.get("/casti", function (req, res) {
+
+    client.query("select * from unnest(enum_range(null::categ_casca))", function (err, rezCategorie) {
+        if (err) {
+            console.log(err);
+            afiseazaEroare(res, 2);
+        }
+        else {
+            let conditieWhere = "";
+            if (req.query.tip)
+                conditieWhere = ` WHERE tip_casca='${req.query.tip}'`;
+            client.query("SELECT * from casti" + conditieWhere, function (err, rez) {
+
+                if (err) {
+                    console.log(err);
+                    afiseazaEroare(res, 2);
+                }
+                else
+                    res.render("pagini/casti", { produse: rez.rows, optiuni: rezCategorie.rows });
+            });
+        }
+    });
+
+
+});
+
+app.get("/casti/:id", function (req, res) {
+    console.log(req.params);
+
+    client.query(`SELECT * FROM casti WHERE id=${req.params.id}`, function (err, rezultat) {
+        if (err) {
+            console.log(err);
+            afiseazaEroare(res, 2);
+        }
+        else
+            res.render("pagini/produs", { prod: rezultat.rows[0] });
+    });
+});
+
 app.get(["/index", "/", "/home"], function (req, res) {
     console.log(req.ip);
-    res.render("pagini/index.ejs", { ip: req.ip, imagini: obGlobal.obImagini.imagini });
-
+    res.render("pagini/index.ejs", {
+        ip: req.ip,
+        imagini: obGlobal.obImagini.imagini,
+    });
 });
 
 app.get("/istoric", function (req, res) {
@@ -80,18 +131,16 @@ app.get("/istoric", function (req, res) {
 });
 
 app.get("/galerie", function (req, res) {
-
     // la fiecare request al paginii generam un nr random de imagini
     let nrImagini = randomInt(5, 11);
-    if (nrImagini % 2 == 0)
-        nrImagini++;
+    if (nrImagini % 2 == 0) nrImagini++;
 
     // vectorul cu imaginile de la sfarsit la inceput
     let imgInv = [...obGlobal.obImagini.imagini].reverse();
 
     // citim fisierul scss si il impartim in linii
     let fisScss = path.join(__dirname, "resurse/scss/galerie_animata.scss");
-    let liniiFisScss = fs.readFileSync(fisScss).toString().split('\n');
+    let liniiFisScss = fs.readFileSync(fisScss).toString().split("\n");
 
     let stringImg = "$nrImg: " + nrImagini + ";";
 
@@ -103,9 +152,13 @@ app.get("/galerie", function (req, res) {
 
     // scriem in fisierul scss
     // se va compila automat din functia compileaza_scss cand se schimba
-    fs.writeFileSync(fisScss, liniiFisScss.join('\n'))
+    fs.writeFileSync(fisScss, liniiFisScss.join("\n"));
 
-    res.render("pagini/galerie.ejs", { imagini: obGlobal.obImagini.imagini, nrImagini: nrImagini, imgInv: imgInv });
+    res.render("pagini/galerie.ejs", {
+        imagini: obGlobal.obImagini.imagini,
+        nrImagini: nrImagini,
+        imgInv: imgInv,
+    });
 });
 
 // app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {
@@ -121,28 +174,24 @@ app.get("/*", function (req, res) {
                     // afiseazaEroare(res, { _identificator: 404, _titlu: "Pagina nu a fost gasita", _text: "Pagina nu a fost gasita", _imagine: "/resurse/images/erori/lupa.jpg" });
                     afiseazaEroare(res, 404);
                 }
-            }
-            else {
+            } else {
                 afiseazaEroare(res);
             }
         });
-    }
-    catch (err) {
+    } catch (err) {
         if (err.message.startsWith("Cannot find module")) {
             afiseazaEroare(res, 404);
-        }
-        else {
+        } else {
             afiseazaEroare(res);
         }
-
     }
-
 });
 
 function initErori() {
-
     // var continut = fs.readFileSync(__dirname + "/resurse/json/erori.json").toString("utf-8");
-    var continut = fs.readFileSync(path.join(__dirname, "/resurse/json/erori.json")).toString("utf-8");
+    var continut = fs
+        .readFileSync(path.join(__dirname, "/resurse/json/erori.json"))
+        .toString("utf-8");
     obGlobal.obErori = JSON.parse(continut);
 
     let vErori = obGlobal.obErori.info_erori;
@@ -150,14 +199,16 @@ function initErori() {
     //     console.log(vErori[i].imagine);
 
     for (let eroare of vErori) {
-        eroare.imagine = "/" + obGlobal.obErori.cale_baza + "/" + eroare.imagine;
+        eroare.imagine =
+            "/" + obGlobal.obErori.cale_baza + "/" + eroare.imagine;
         console.log(eroare.imagine);
     }
 }
 
 function initImagini() {
-
-    var continut = fs.readFileSync(path.join(__dirname, "/resurse/json/galerie.json")).toString("utf-8");
+    var continut = fs
+        .readFileSync(path.join(__dirname, "/resurse/json/galerie.json"))
+        .toString("utf-8");
     obGlobal.obImagini = JSON.parse(continut);
 
     let vImagini = obGlobal.obImagini.imagini;
@@ -177,17 +228,33 @@ function initImagini() {
     for (let imag of vImagini) {
         [nume_fisier, extensie] = imag.fisier.split(".");
 
-        imag.fisier_mediu = "/" + path.join(obGlobal.obImagini.cale_galerie, "mediu", nume_fisier + "_mediu" + ".webp");
-        imag.fisier_mic = "/" + path.join(obGlobal.obImagini.cale_galerie, "mic", nume_fisier + "_mic" + ".webp");
+        imag.fisier_mediu =
+            "/" +
+            path.join(
+                obGlobal.obImagini.cale_galerie,
+                "mediu",
+                nume_fisier + "_mediu" + ".webp"
+            );
+        imag.fisier_mic =
+            "/" +
+            path.join(
+                obGlobal.obImagini.cale_galerie,
+                "mic",
+                nume_fisier + "_mic" + ".webp"
+            );
 
         let caleAbsFisMediu = path.join(__dirname, imag.fisier_mediu);
         let caleAbsFisMic = path.join(__dirname, imag.fisier_mic);
 
-        sharp(path.join(caleAbs, imag.fisier)).resize(1000, 1000).toFile(caleAbsFisMediu);
-        sharp(path.join(caleAbs, imag.fisier)).resize(300, 300).toFile(caleAbsFisMic);
+        sharp(path.join(caleAbs, imag.fisier))
+            .resize(1000, 1000)
+            .toFile(caleAbsFisMediu);
+        sharp(path.join(caleAbs, imag.fisier))
+            .resize(300, 300)
+            .toFile(caleAbsFisMic);
 
-        imag.fisier = "/" + path.join(obGlobal.obImagini.cale_galerie, imag.fisier);
-
+        imag.fisier =
+            "/" + path.join(obGlobal.obImagini.cale_galerie, imag.fisier);
     }
 }
 
@@ -197,32 +264,50 @@ function initImagini() {
 // idem pentru celelalte
 
 // function afiseazaEroare(res, {_identificator, _titlu, _text, _imagine} = {}) {
-function afiseazaEroare(res, _identificator, _titlu = "titlu default", _text = "text default", _imagine) {
+function afiseazaEroare(
+    res,
+    _identificator,
+    _titlu = "titlu default",
+    _text = "text default",
+    _imagine
+) {
     let vErori = obGlobal.obErori.info_erori;
     let eroare = vErori.find(function (element) {
         return element.identificator === _identificator;
     });
 
     if (eroare) {
-        let titlu = _titlu = "titlu default" ? (eroare.titlu || _titlu) : _titlu;
-        let text = _text = "text default" ? (eroare.text || _text) : _text;
-        let imagine = _imagine = "imagine default" ? (eroare.imagine || _imagine) : _imagine;
+        let titlu = (_titlu = "titlu default"
+            ? eroare.titlu || _titlu
+            : _titlu);
+        let text = (_text = "text default" ? eroare.text || _text : _text);
+        let imagine = (_imagine = "imagine default"
+            ? eroare.imagine || _imagine
+            : _imagine);
         if (eroare.status) {
-            res.status(eroare.identificator).render("pagini/eroare.ejs", { titlu: titlu, text: text, imagine: imagine });
-
+            res.status(eroare.identificator).render("pagini/eroare.ejs", {
+                titlu: titlu,
+                text: text,
+                imagine: imagine,
+            });
+        } else {
+            res.render("pagini/eroare.ejs", {
+                titlu: titlu,
+                text: text,
+                imagine: imagine,
+            });
         }
-        else {
-            res.render("pagini/eroare.ejs", { titlu: titlu, text: text, imagine: imagine });
-        }
-    }
-    else {
+    } else {
         let errDef = obGlobal.obErori.eroare_default;
-        res.render("pagini/eroare.ejs", { titlu: errDef.titlu, text: errDef.text, imagine: obGlobal.obErori.cale_baza + "/" + errDef.imagine });
+        res.render("pagini/eroare.ejs", {
+            titlu: errDef.titlu,
+            text: errDef.text,
+            imagine: obGlobal.obErori.cale_baza + "/" + errDef.imagine,
+        });
     }
 }
 
 function compileazaScss(caleScss, caleCss) {
-
     if (!caleCss) {
         let vectorCale = caleScss.split("\\");
         let numeFisierExt = vectorCale[vectorCale.length - 1];
@@ -239,20 +324,27 @@ function compileazaScss(caleScss, caleCss) {
 
     let vectorCale = caleCss.split("\\");
     let numeFisCss = vectorCale[vectorCale.length - 1];
-    
 
     let data_curenta = new Date();
-    let numeBackup = numeFisCss.split(".")[0] + "_" + data_curenta.toDateString().replace(" ", "_") + "_" + data_curenta.getHours() + "_" + data_curenta.getMinutes() + "_" + data_curenta.getSeconds() + ".css";
-    
-    fs.writeFileSync(path.join(obGlobal.folderBackup, numeBackup), "backup");
+    let numeBackup =
+        numeFisCss.split(".")[0] +
+        "_" +
+        data_curenta.toDateString().replace(" ", "_") +
+        "_" +
+        data_curenta.getHours() +
+        "_" +
+        data_curenta.getMinutes() +
+        "_" +
+        data_curenta.getSeconds() +
+        ".css";
 
+    fs.writeFileSync(path.join(obGlobal.folderBackup, numeBackup), "backup");
 
     if (fs.existsSync(caleCss)) {
         fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeBackup));
     }
 
-    rez = sass.compile(caleScss, { "sourceMap": true });
-    
+    rez = sass.compile(caleScss, { sourceMap: true });
 
     fs.writeFileSync(caleCss, rez.css);
 
@@ -284,4 +376,3 @@ fs.watch(obGlobal.folderScss, function (event, filename) {
 app.listen(8080);
 
 console.log("Serverul a pornit!");
-

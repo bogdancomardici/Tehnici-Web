@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <title>2roti</title>
+
+    <!--tag-uri meta charset, keywords, author, description-->
+    <meta name="keywords" content="motocicleta, echipament, piese, casca, moto">
+    <meta name="description" content="2roti - Magazin online de piese, accesorii si echipament pentru motociclete">
+    <link rel="stylesheet" href="/resurse/css/produs.css" type="text/css">
+    <%- include("../fragmente/head.ejs"); %>
+</head>
+
+<body>
+    <%- include("../fragmente/header") %>
+
+        <main>
+            <section>
+                <article id="art-produs">
+                    <h3><span class="nume"><%- locals.prod.nume %></span></h3>
+                    <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
+                    <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
+                    <p>Certificari: <span class="certificari"><%- locals.prod.certificari %> </span></p>
+                    <p>Greutate: <span class="greutate"><%- locals.prod.greutate %> </span></p>
+                    <p>Culoare: <span class="culoare"><%- locals.prod.culoare %> </span></p>
+                    <p>Categorie: <span class="categorie"><%- locals.prod.categorie %> </span></p>
+                    <p>Pinlock: <span class="pt_diabetici"><%- locals.prod.pinlock %> </span></p>
+                    <p>Data adăugare: <span class="categorie"><%- locals.prod.data_adaugare %> </span></p>
+                    <figure class="imag-produs">
+                        <img src="/resurse/images/produse/casti/<%- locals.prod.imagine %>"
+                            alt="[imagine <%- locals.prod.nume %>]" />
+                    </figure>
+                </article>
+
+            </section>
+        </main>
+
+        <%- include("../fragmente/footer") %>
+</body>
+
+</html>
