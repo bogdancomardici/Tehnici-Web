@@ -33,41 +33,13 @@
             <li id="acasa-buton"><a href="/home">
                     <div><i class="fa-solid fa-house"></i><b id="scris-acasa">Acasa</b></div>
                 </a></li>
-            <li id="casti">
-                <div><i class="fa-solid fa-helmet-safety"></i><a href="/casti">Casti</a></div>
-                <ul>
-                    <li><a href="/casti?tip=integrala">Integrale</a></li>
-                    <li><a href="/casti?tip=flip-up">Flip-Up</a></li>
-                    <li><a href="/casti?tip=open-face">Open Face</a></li>
-                </ul>
-            </li>
 
-            <li id="echipamente">
-                <div><i class="fa-solid fa-shield-halved"></i>Echipamente</div>
+            <li id="produse">
+                <div><a href="/produse"><i class="fa-solid fa-bag-shopping"></i>Produse</a></div>
                 <ul>
-                    <li><a href="#geci">Geci</a></li>
-                    <li><a href="#pantaloni">Pantaloni</a></li>
-                    <li><a href="#ghete">Ghete</a></li>
-                </ul>
-            </li>
-
-            <li id="piese">
-                <div><i class="fa-solid fa-gears"></i>Piese</div>
-                <ul>
-                    <li><a href="#kit_lant">Kit Lant</a></li>
-                    <li><a href="#discuri">Discuri</a></li>
-                    <li><a href="#placute">Placute</a></li>
-                    <li><a href="#ulei_motor">Ulei Motor</a></li>
-                    <li><a href="#filtre">Filtre</a></li>
-                </ul>
-            </li>
-
-            <li id="accesorii">
-                <div><i class="fa-solid fa-motorcycle"></i>Accesorii</div>
-                <ul>
-                    <li><a href="#huse">Huse</a></li>
-                    <li><a href="#genti">Genti</a></li>
-                    <li><a href="#antifurt">Antifurt</a></li>
+                    <% for (let opt of locals.optiuniMeniu) { %>
+                    <li><a href="/produse?categ=<%= opt.unnest %>"><%= opt.unnest %></a></li>
+                        <% } %>
                 </ul>
             </li>
 

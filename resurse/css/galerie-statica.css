@@ -88,10 +88,6 @@ hr{
     background-position: center;
     margin-top: 2em;
     margin-bottom: 1em;
-    /* box-shadow: 0.05em 0.05em 0.05em 0.05em #e07e07 inset,
-        -0.05em -0.05em 0.05em 0.05em #e07e07 inset,
-        -0.05em 0.05em 0.05em 0.05em #e07e07 inset,
-        0.05em -0.05em 0.05em 0.05em #e07e07 inset; */
     overflow: visible;
 }
 

@@ -28,7 +28,8 @@ obGlobal = {
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
     folderBackup: path.join(__dirname, "backup"),
-    optiuniMeniu: []
+    optiuniMeniu: [],
+    optiuniCulori: []
 };
 
 app = express();
@@ -67,11 +68,25 @@ app.get("/ceva", function (req, res) {
 
 // Produse
 
-client.query("select * from unnest(enum_range(null::tipuri_casca)", function (err, rezTip) {
-    if (err)
-        console.log(err);
-    else
-        obGlobal.optiuniMeniu = rezTip.rows;
+client.query(
+    'SELECT unnest(enum_range(NULL::categ_produse))',
+    (err, res) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log(res.rows);
+        obGlobal.optiuniMeniu = res.rows;
+    }
+);
+
+client.query('SELECT unnest(enum_range(NULL::culori))', (err, rez) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(rez.rows);
+    obGlobal.optiuniCulori = rez.rows;
 });
 
 app.use("/*", function (req, res, next) {
@@ -79,58 +94,78 @@ app.use("/*", function (req, res, next) {
     next();
 });
 
-app.get("/casti", function (req, res) {
+app.get("/produse", function (req, res) {
 
-    client.query("select * from unnest(enum_range(null::categ_casca))", function (err, rezCategorie) {
-        if (err) {
-            console.log(err);
-            afiseazaEroare(res, 2);
+    console.log("produse");
+    client.query(
+        "select * from unnest(enum_range(null::categ_produse))",
+        function (err, rezCategorie) {
+            if (err) {
+                console.log(err);
+                afiseazaEroare(res, 2);
+            } else {
+                let conditieWhere = "";
+                if (req.query.categ)
+                    conditieWhere = ` WHERE categorie='${req.query.categ}'`;
+                client.query(
+                    "SELECT * from produse" + conditieWhere,
+                    function (err, rez) {
+                        if (err) {
+                            console.log(err);
+                            afiseazaEroare(res, 2);
+                        } else {
+                            let zilele_saptamanii = ["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
+                            for (let i of rez.rows) {
+                                data = new Date(i.data_adaugare);
+                                i.data_adaugare = data.toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' }) + "(" + zilele_saptamanii[data.getDay()] + ")";
+                            }
+                            res.render("pagini/produse", {
+                                produse: rez.rows,
+                                optiuni: rezCategorie.rows,
+                                culori: obGlobal.optiuniCulori
+                            });
+                        }
+
+                    }
+                );
+            }
         }
-        else {
-            let conditieWhere = "";
-            if (req.query.tip)
-                conditieWhere = ` WHERE tip_casca='${req.query.tip}'`;
-            client.query("SELECT * from casti" + conditieWhere, function (err, rez) {
-
-                if (err) {
-                    console.log(err);
-                    afiseazaEroare(res, 2);
-                }
-                else
-                    res.render("pagini/casti", { produse: rez.rows, optiuni: rezCategorie.rows });
-            });
-        }
-    });
-
-
+    );
 });
 
-app.get("/casti/:id", function (req, res) {
+app.get("/produse/:id", function (req, res) {
+
     console.log(req.params);
 
-    client.query(`SELECT * FROM casti WHERE id=${req.params.id}`, function (err, rezultat) {
-        if (err) {
-            console.log(err);
-            afiseazaEroare(res, 2);
+    client.query(
+        `SELECT * FROM produse WHERE id=${req.params.id}`,
+        function (err, rezultat) {
+            if (err) {
+                console.log(err);
+                afiseazaEroare(res, 2);
+            } else res.render("pagini/produs", { prod: rezultat.rows[0] });
         }
-        else
-            res.render("pagini/produs", { prod: rezultat.rows[0] });
-    });
+    );
 });
 
 app.get(["/index", "/", "/home"], function (req, res) {
+
     console.log(req.ip);
+    console.log(obGlobal.optiuniMeniu);
     res.render("pagini/index.ejs", {
         ip: req.ip,
         imagini: obGlobal.obImagini.imagini,
+        optiuni: obGlobal.optiuniMeniu
     });
 });
 
 app.get("/istoric", function (req, res) {
+
     res.render("pagini/istoric.ejs");
 });
 
 app.get("/galerie", function (req, res) {
+
     // la fiecare request al paginii generam un nr random de imagini
     let nrImagini = randomInt(5, 11);
     if (nrImagini % 2 == 0) nrImagini++;
@@ -157,16 +192,18 @@ app.get("/galerie", function (req, res) {
     res.render("pagini/galerie.ejs", {
         imagini: obGlobal.obImagini.imagini,
         nrImagini: nrImagini,
-        imgInv: imgInv,
+        imgInv: imgInv
     });
 });
 
 // app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {
 app.get("/*.ejs", function (req, res) {
+
     afiseazaEroare(res, 400);
 });
 
 app.get("/*", function (req, res) {
+
     try {
         res.render("pagini" + req.url, function (err, rezRandare) {
             if (err) {
@@ -289,12 +326,13 @@ function afiseazaEroare(
                 titlu: titlu,
                 text: text,
                 imagine: imagine,
+                optiuni: obGlobal.optiuniMeniu
             });
         } else {
             res.render("pagini/eroare.ejs", {
                 titlu: titlu,
                 text: text,
-                imagine: imagine,
+                imagine: imagine
             });
         }
     } else {
@@ -302,7 +340,7 @@ function afiseazaEroare(
         res.render("pagini/eroare.ejs", {
             titlu: errDef.titlu,
             text: errDef.text,
-            imagine: obGlobal.obErori.cale_baza + "/" + errDef.imagine,
+            imagine: obGlobal.obErori.cale_baza + "/" + errDef.imagine
         });
     }
 }

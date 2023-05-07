@@ -82,3 +82,55 @@
     
     border:1px solid black;
 }
+
+.produs-flex{
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.tabel-container{
+    width: 50%;
+    padding: 0;
+    padding-left: 1em;
+}
+
+.imag-container figure a{
+    width: 100%;
+}
+.imag-container{
+    width: 50%;
+    text-align: center;
+}
+
+#inp-nume{
+    margin-bottom: 1em;
+}
+
+#range-greutate{
+margin-bottom: 1em;
+}
+
+#inp-descriere{
+    resize: none;
+}
+
+#inp-culoare{
+    height: 3em;
+}
+
+#cat-container{
+    margin-top: 1em;
+}
+
+#culoare-container{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+#desc-container{
+    margin-top: 1em;
+}
+
+#shr-container{
+    margin-top: 1em;
+}
