@@ -11,17 +11,13 @@
 
 
     <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
+    <script type="text/javascript" src="/resurse/js/produse.js">
+    </script>
+    
 
-
-    <script type="text/javascript" src=/resurse/js/produse.js></script>
+    
     <%- include("../fragmente/head.ejs"); %>
-
-        <script>
-            function getSelectedValue() {
-                var selectedValue = document.getElementById("inp-greutate").value;
-                document.getElementById("val_select").textContent = "(" + selectedValue + ")";
-            }
-        </script>
+ 
 </head>
 
 <body>
@@ -31,9 +27,9 @@
             <div id="filtre">
 
                 <label> Nume: <input type="text" id="inp-nume"></label>
-                <div id="range-greutate">
-                    <label> Pret minim: <span>(0)</span><input type="range" id="inp-greutate" value="0" min="0"
-                            max="2000" onchange="getSelectedValue()"> <span id="infoRange"></span>(2000)</span><span
+                <div id="range-pret">
+                    <label> Greutate minima: <span>(0)</span><input type="range" id="inp-pret" value="0" min="0" step="5"
+                            max="3000" onchange="getSelectedValue()"> <span id="infoRange"></span>(3000)</span><span
                             id="val_select">(0)</label>
                 </div>
 
@@ -114,7 +110,7 @@
                         </label>
                 </div>
                 <p>
-                    <button id="filtrare" class="btn btn-primary"><i class="bi bi-funnel"></i>Filtreaza</button>
+                    <button id="filtrare" class="btn btn-primary"></i>Filtreaza</button>
 
                     <button id="resetare" class="btn btn-danger">Reseteaza</button><br />
                     <button id="sortCrescNume" class="btn btn-secondary">Sorteaza crescator dupa pret si nume</button>
@@ -135,32 +131,36 @@
                                     <table>
                                         <tr>
                                             <td>Pret: </td>
-                                            <td><%- prod.pret %></td>
+                                            <td class="val-pret"><%- prod.pret %></td>
                                         </tr>
                                         <tr>
                                             <td>Culoare: </td>
-                                            <td><%- prod.culoare %></td>
+                                            <td class="val-culoare"><%- prod.culoare %></td>
                                         </tr>
                                         <tr>
                                             <td>Certificari: </td>
-                                            <td><%- prod.certificari %></td>
+                                            <td class="val-cert"><%- prod.certificari %></td>
                                         </tr>
                                         <tr>
                                             <td>Data adaugare: </td>
                                             <td>
-                                                <time datetime="YYYY-MM-DD"><%- prod.data_adaugare %></time>
+                                                <time datetime="YYYY-MM-DD" class="val-data"><%- prod.data_adaugare %></time>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Disponibil Showroom: </td>
-                                            <td><%- prod.disp_showroom %></td>
+                                            <td class="val-showroom"><%- prod.disp_showroom %></td>
+                                        </tr>
+                                        <tr class="atr-ascuns">
+                                            <td>Greutate: </td>
+                                            <td class="val-greutate"><%- prod.greutate %></td>
                                         </tr>
                                     </table>
                                     <p>
                                     <h5>Descriere: </h5>
                                     <%- prod.descriere %>
                                         </p>
-                                        <p>Categorie: <%- prod.categorie %></p>
+                                        <p>Categorie: <span class="val-categorie"><%- prod.categorie %></span></p>
                                 </div>
                                 <div class="imag-container">
                                     <figure>

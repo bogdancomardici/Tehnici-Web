@@ -52,10 +52,6 @@ for (let folder of vectorFoldere) {
     }
 }
 
-app.use(/^\/resurse(\/[a-zA-Z0-9]*(?!\.)[a-zA-Z0-9]*)*$/, function (req, res) {
-    afiseazaEroare(res, 403);
-});
-
 app.get("/favicon.ico", function (req, res) {
     // res.sendFile(__dirname + "/resurse/favicon/favicon.ico");
     res.sendFile(path.join(__dirname, "/resurse/favicon/favicon.ico"));
@@ -89,9 +85,15 @@ client.query('SELECT unnest(enum_range(NULL::culori))', (err, rez) => {
     obGlobal.optiuniCulori = rez.rows;
 });
 
+
+
 app.use("/*", function (req, res, next) {
     res.locals.optiuniMeniu = obGlobal.optiuniMeniu;
     next();
+});
+
+app.use(/^\/resurse(\/[a-zA-Z0-9]*)*$/, function(req,res){
+    afiseazaEroare(res,403);
 });
 
 app.get("/produse", function (req, res) {
