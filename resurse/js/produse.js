@@ -35,6 +35,20 @@ window.onload = function() {
             }
         }
 
+        let val_descriere = document.getElementById("inp-descriere").value.toLowerCase();
+
+        let val_culori = getSelectValues(document.getElementById("inp-culoare"));
+
+        let val_showroom;
+
+        let showroom = document.getElementsByName("s_rad");
+        for(let r of showroom){
+            if(r.checked){
+                val_showroom = r.value;
+                break;
+            }
+        }
+
         var produse = document.getElementsByClassName("produs");
 
         
@@ -48,14 +62,20 @@ window.onload = function() {
             let greutate = prod.getElementsByClassName("val-greutate")[0].innerHTML;
             let certificare = prod.getElementsByClassName("val-cert")[0].innerHTML;
             let categorie = prod.getElementsByClassName("val-categorie")[0].innerHTML;
+            let descriere = prod.getElementsByClassName("val-descriere")[0].innerHTML.toLowerCase();
+            let culoare = prod.getElementsByClassName("val-culoare")[0].innerHTML.toLowerCase();
+            let showroom = prod.getElementsByClassName("val-showroom")[0].innerHTML.toLowerCase();
 
             pret = parseInt(pret);
+
             let cond_nume = (nume.startsWith(val_nume));
             let cond_pret = (pret >= val_pret);
             let cond_dest = (destinatie == val_dest || val_dest == "oricare");
             let cond_greutate = (val_greutate == "toate" || (gr_a <= greutate && greutate < gr_b));
             let cond_cert = (val_cert == "oricare");
-
+            let cond_descriere = (descriere.includes(val_descriere));
+            let cond_culoare = (val_culori.includes(culoare) || val_culori.includes("oricare"));
+            let cond_showroom = (val_showroom == "toate" || showroom == val_showroom);
             for(let cert of val_cert){
                 if(certificare.includes(cert)){
                     cond_cert = true;
@@ -65,7 +85,7 @@ window.onload = function() {
 
             let cond_categ = (val_categ == "toate" || categorie == val_categ);
 
-            if(cond_nume && cond_greutate && cond_pret && cond_categ && cond_dest && cond_cert)
+            if(cond_nume && cond_greutate && cond_pret && cond_categ && cond_dest && cond_cert && cond_descriere && cond_culoare && cond_showroom)
                 prod.style.display = "block";
 
         }
@@ -85,10 +105,17 @@ window.onload = function() {
         document.getElementsByName("certificare")[1].checked = false;
         document.getElementsByName("certificare")[2].checked = true;
 
+        document.getElementById("inp-descriere").value = "";
+
+        resetSelectValues(document.getElementById("inp-culoare"));
         var produse = document.getElementsByClassName("produs");
         for (prod of produse){
             prod.style.display = "block";
         }
+
+        document.getElementsByName("s_rad")[0].checked = false;
+        document.getElementsByName("s_rad")[1].checked = false;
+        document.getElementsByName("s_rad")[2].checked = true;
 
     }
 
@@ -114,6 +141,39 @@ window.onload = function() {
     }
     document.getElementById("sortDescrescNume").onclick=function(){
         sortare(-1);
+    }
+
+    function getSelectValues(select) {
+        var result = [];
+        var options = select && select.options;
+        var opt;
+      
+        for (var i=0, iLen=options.length; i<iLen; i++) {
+          opt = options[i];
+      
+          if (opt.selected) {
+            result.push(opt.value || opt.text);
+          }
+        }
+        return result;
+      }
+
+    function resetSelectValues(select){
+        var options = select && select.options;
+        var opt;
+      
+        for (var i=0, iLen=options.length; i<iLen; i++) {
+          opt = options[i];
+        
+          if(opt.value == "oricare"){
+            opt.selected = true;
+            }
+          else if (opt.selected) {
+            opt.selected = false;
+          }
+        }
+
+
     }
 }
 
