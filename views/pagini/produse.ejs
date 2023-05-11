@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
     <script type="text/javascript" src="/resurse/js/produse.js">
     </script>
-    
 
-    
+
+
     <%- include("../fragmente/head.ejs"); %>
- 
+
 </head>
 
 <body>
@@ -34,9 +34,9 @@
                 </div>
 
                 <label for="destinatie">Destinatie:</label>
-                <input list="destinatie" name="destinatie" id="inp-dest" placeholder="oricare">
+                <input list="destinatie" name="destinatie" id="inp-dest">
 
-                <datalist id="destinatie" >
+                <datalist id="destinatie">
                     <option value="strada">
                     <option value="off-road">
                     <option value="hybrid">
@@ -105,18 +105,23 @@
                             <input id="s_rad2" name="s_rad" value="false" type="radio" />
                         </label>
                     <p><label>TOATE
-                            <input id="s_rad3" name="s_rad" value="toate" type="radio" checked/>
+                            <input id="s_rad3" name="s_rad" value="toate" type="radio" checked />
                         </label>
                 </div>
                 <p>
                     <button id="filtrare" class="btn btn-primary"></i>Filtreaza</button>
 
                     <button id="resetare" class="btn btn-danger">Reseteaza</button><br />
-                    <button id="sortCrescNume" class="btn btn-secondary">Sorteaza crescator dupa pret si nume</button>
-                    <button id="sortDescrescNume" class="btn btn-secondary">Sorteaza descrescator dupa pret si nume</button>
+                    <button id="sortCrescNume" class="btn btn-secondary">Sorteaza crescator dupa pret si
+                        destinatie</button>
+                    <button id="sortDescrescNume" class="btn btn-secondary">Sorteaza descrescator dupa pret si
+                        destinatie</button>
 
                 </p>
 
+                <div id="calc">
+                    <button id="calculare" class="btn btn-info">Calculeaza media preturilor selectate</button>
+                </div>
                 <p id="p-suma">Apăsați Alt+"c" pentdu suma preturilor produselor afișate. </p>
             </div>
             <section id="produse">
@@ -143,7 +148,8 @@
                                         <tr>
                                             <td>Data adaugare: </td>
                                             <td>
-                                                <time datetime="YYYY-MM-DD" class="val-data"><%- prod.data_adaugare %></time>
+                                                <time datetime="YYYY-MM-DD" class="val-data"><%- prod.data_adaugare
+                                                        %></time>
                                             </td>
                                         </tr>
                                         <tr>
@@ -156,12 +162,15 @@
                                         <tr class="atr-ascuns">
                                             <td class="val-dest"><%- prod.destinatie %></td>
                                         </tr>
+                                        <tr class="atr-ascuns">
+                                            <td class="val-id"><%- prod.id  %></td>
+                                        </tr>
                                     </table>
                                     <p>
                                     <h5>Descriere: </h5>
                                     <span class="val-descriere"><%- prod.descriere %></span>
-                                        </p>
-                                        <p>Categorie: <span class="val-categorie"><%- prod.categorie %></span></p>
+                                    </p>
+                                    <p>Categorie: <span class="val-categorie"><%- prod.categorie %></span></p>
                                 </div>
                                 <div class="imag-container">
                                     <figure>

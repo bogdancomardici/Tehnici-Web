@@ -121,8 +121,12 @@ app.get("/produse", function (req, res) {
                                 data = new Date(i.data_adaugare);
                                 i.data_adaugare = data.toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' }) + "(" + zilele_saptamanii[data.getDay()] + ")";
                             }
+                            let produse = rez.rows;
+                            produse.sort(function (a, b) {
+                                return a.id - b.id;
+                            });
                             res.render("pagini/produse", {
-                                produse: rez.rows,
+                                produse: produse,
                                 optiuni: rezCategorie.rows,
                                 culori: obGlobal.optiuniCulori
                             });
