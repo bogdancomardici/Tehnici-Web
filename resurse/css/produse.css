@@ -113,6 +113,7 @@ margin-bottom: 1em;
 
 #inp-descriere{
     resize: none;
+    background-color: white;
 }
 
 #inp-culoare{
@@ -129,6 +130,7 @@ margin-bottom: 1em;
 }
 #desc-container{
     margin-top: 1em;
+    width: 25em;
 }
 
 #shr-container{

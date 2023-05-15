@@ -1,13 +1,27 @@
+<head>
+    <script type="text/javascript" src="/resurse/js/produse.js">
+    </script>
+
+    <script type="text/javascript" src="/resurse/js/tema.js">
+    </script>
+    <%- include("../fragmente/head.ejs") %>
+</head>
 <header>
     <!--Titlu-->
-    <img src="resurse/images/logo.png" alt="" id="logo2">
+    <!-- <img src="resurse/images/logo.png" alt="" id="logo2"> -->
     <!-- <h1 id="sigla"><i><img src="resurse/bike-shadow.png" alt="" id ="logo"></i> 2Roti - Magazin Moto Online</h1> -->
-
-    <!--meniu nav-->
-
-    <%- include("../fragmente/head.ejs") %>
-
-        
 </header>
+<!--meniu nav-->
 
+
+
+
+<div id="select_tema">
+    <i class="fa-regular fa-moon"></i>
+        <div class="form-check form-switch" id="cont_switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switch_tema">
+          </div>
+    <i class="fa-regular fa-sun"></i>
+    
+</div>
 <%- include("../fragmente/meniu.ejs") %>

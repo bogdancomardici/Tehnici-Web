@@ -67,4 +67,7 @@
         column-count: 1;
     }
 
+    .btn-ascuns{
+        display: none;
+    }
 }

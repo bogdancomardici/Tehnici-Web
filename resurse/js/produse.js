@@ -1,4 +1,4 @@
-window.onload = function () {
+window.addEventListener("load", function () {
 
     document.getElementById("inp-dest").value = "oricare";
 
@@ -108,8 +108,11 @@ window.onload = function () {
             document.getElementsByName("gr_rad")[2].checked = false;
             document.getElementsByName("gr_rad")[3].checked = true;
             document.getElementsByName("certificare")[0].checked = false;
+            document.getElementsByName("certificare")[0].style.backgroundColor = "transparent";
             document.getElementsByName("certificare")[1].checked = false;
+            document.getElementsByName("certificare")[1].style.backgroundColor = "transparent";
             document.getElementsByName("certificare")[2].checked = true;
+            document.getElementsByName("certificare")[2].style.backgroundColor = "var(--culoare_principala)";
 
             document.getElementById("inp-descriere").value = "";
 
@@ -117,12 +120,17 @@ window.onload = function () {
             document.getElementsByName("s_rad")[1].checked = false;
             document.getElementsByName("s_rad")[2].checked = true;
 
+            document.getElementById("inp-descriere").classList.remove("is-valid");
+            document.getElementById("inp-descriere").classList.remove("is-invalid");
+            
             resetSelectValues(document.getElementById("inp-culoare"));
 
             resetSortare();
 
-            for(let p of document.getElementsByClassName("produs"))
+            for (let p of document.getElementsByClassName("produs"))
                 p.style.display = "block";
+
+
         }
     }
 
@@ -190,6 +198,17 @@ window.onload = function () {
             let m = s / n;
             rez = document.createElement("div");
             rez.innerHTML = m;
+            rez.style.position = "fixed";
+            rez.style.top = "50%";
+            rez.style.left = "45%";
+            rez.style.width = "10%";
+            rez.style.textAlign = "center";
+            rez.style.backgroundColor = "lightgray";
+            rez.style.border = "1px solid gray";
+            rez.style.borderRadius = "10px"; // Rounded border
+            rez.style.fontSize = "3em";
+            rez.style.padding = "0.2em";
+            rez.style.zIndex = "10";
             rez.id = "rez";
             document.getElementById("calc").appendChild(rez);
 
@@ -282,18 +301,102 @@ window.onload = function () {
 
         // descriere valida
 
-        let val_descriere = document.getElementById("inp-descriere").value.toLowerCase();
-        if (!isAlphanumeric(val_descriere) && val_descriere != "") {
+        let descriere = document.getElementById("inp-descriere");
+        if (descriere.classList.contains("is-invalid")) {
             alert("Descrierea trebuie sa contina doar litere si cifre!");
             return false;
         }
 
+
         return true;
 
     }
-}
 
+    var inputField = document.getElementById("inp-descriere");
+
+    inputField.addEventListener("input", function () {
+        var val_descriere = inputField.value.toLowerCase();
+
+
+        if (!isAlphanumeric(val_descriere) && val_descriere !== "") {
+            if (!inputField.classList.contains("is-invalid")) {
+                inputField.classList.add("is-invalid");
+            }
+        } else {
+            inputField.classList.add("is-valid");
+            inputField.classList.remove("is-invalid");
+        }
+    });
+
+    inputField.addEventListener("focusout", function () {
+        var val_descriere = inputField.value.toLowerCase();
+        if (val_descriere == "") {
+            inputField.classList.remove("is-valid");
+            inputField.classList.remove("is-invalid");
+        }
+    });
+
+    var cert_dot = document.getElementById("cert-dot");
+    var cert_ece = document.getElementById("cert-ece");
+    var cert_oricare = document.getElementById("cert-oricare");
+
+    if (cert_dot.checked) {
+        cert_dot.style.backgroundColor = "var(--culoare_principala)"
+    }
+    else {
+        cert_dot.style.backgroundColor = "transparent"
+    }
+
+    if (cert_ece.checked) {
+        cert_ece.style.backgroundColor = "var(--culoare_principala)"
+    }
+    else {
+        cert_ece.style.backgroundColor = "transparent"
+    }
+
+    if (cert_oricare.checked) {
+        cert_oricare.style.backgroundColor = "var(--culoare_principala)"
+    }
+    else {
+        cert_oricare.style.backgroundColor = "transparent"
+    }
+
+    cert_dot.addEventListener("click", function () {
+        if (cert_dot.checked) {
+            cert_dot.style.backgroundColor = "var(--culoare_principala)"
+        }
+        else {
+            cert_dot.style.backgroundColor = "transparent"
+        }
+    });
+
+    cert_ece.addEventListener("click", function () {
+        if (cert_ece.checked) {
+            cert_ece.style.backgroundColor = "var(--culoare_principala)"
+        }
+        else {
+            cert_ece.style.backgroundColor = "transparent"
+        }
+    });
+
+    cert_oricare.addEventListener("click", function () {
+        if (cert_oricare.checked) {
+            cert_oricare.style.backgroundColor = "var(--culoare_principala)"
+        }
+        else {
+            cert_oricare.style.backgroundColor = "transparent"
+        }
+    });
+});
+
+window.onkeydown = function (e) {
+    if (e.key == 'c' && e.altKey) {
+        document.getElementById("calculare").click();
+    }
+
+}
 function getSelectedValue() {
     var selectedValue = document.getElementById("inp-pret").value;
     document.getElementById("val_select").textContent = "(" + selectedValue + ")";
 }
+

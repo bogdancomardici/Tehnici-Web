@@ -10,10 +10,10 @@
         <% var d = new Date(); %>
         <% var anotimp = ""; %>
 
-        <% if(d.getMonth() >= 3 && d.getMonth() <= 5) { anotimp = "primavara"; }%>
-        <% if(d.getMonth() >= 6 && d.getMonth() <= 8) { anotimp = "vara"; }%>
-        <% if(d.getMonth() >= 9 && d.getMonth() <= 11) { anotimp = "toamna"; }%>
-        <% if(d.getMonth() == 0 || d.getMonth() == 1 || d.getMonth() == 2) { anotimp = "iarna"; }%>
+        <% if(d.getMonth() >= 2 && d.getMonth() <= 4) { anotimp = "primavara"; }%>
+        <% if(d.getMonth() >= 5 && d.getMonth() <= 7) { anotimp = "vara"; }%>
+        <% if(d.getMonth() >= 8 && d.getMonth() <= 10) { anotimp = "toamna"; }%>
+        <% if(d.getMonth() == 0 || d.getMonth() == 1 || d.getMonth() == 11) { anotimp = "iarna"; }%>
     <% for (let imag of locals.imagini) { %>
         
         <% var nume_imag = imag.fisier.split('\\'); %>

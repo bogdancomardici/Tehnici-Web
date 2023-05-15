@@ -61,7 +61,8 @@
 
 #grid-galerie, #reflexie-container, #container-animat{
     border: var(--grosime-border) solid black;
-    background-color: white;
+    background-color: var(--culoare_card);
+    color: var(--culoare_text);
     padding: var(--padding_pagina);
     border-radius: 1em;
     max-width: 100vw;

@@ -1,0 +1,47 @@
+body.dark{
+    --culoare_highlight: #3F0071;
+    --culoare_principala: black;
+    --culoare_border: black;
+    --culoare_secundara: #e03e07;
+    --culoare_warning: #fc2208;
+    --culoare_text: white;
+    --culoare_card: #282A3A;
+    --page_spacing: 4em;
+    --padding_pagina: 1em;
+    --grosime-border: 0.1em;
+    background-color: var(--culoare_principala);
+    color: var(--culoare_text);
+    /* spatiere pagina se schimba pe ecran mediu si mic*/
+    padding-left: var(--page_spacing);
+    padding-right: var(--page_spacing);
+}
+
+body.dark a {
+    text-decoration: none;
+    color: var(--culoare_text);
+}
+
+body.dark #logo2{
+    display: none;
+}
+
+body.dark .grid-produse .produs, #filtre{
+    border-radius: 1em;
+    border: 0.1em solid black;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+    -0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+    -0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
+    0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background-color: var(--culoare_card);
+    color: var(--culoare_text);
+}
+
+body.dark h3{
+    color: var(--culoare_text);
+}
+
+body.dark #art-produs{
+    color: var(--culoare_text);
+    background-color: var(--culoare_card);
+}

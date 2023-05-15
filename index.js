@@ -6,6 +6,7 @@ const sass = require("sass");
 const { Client } = require("pg");
 const { Console } = require("console");
 const { randomInt } = require("crypto");
+const AccesBD = require("./resurse/js/accesbd.js")
 
 var client = new Client({
     database: "douaroti",
