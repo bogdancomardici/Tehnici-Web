@@ -27,10 +27,12 @@
                         <label> Nume: <input type="text" id="inp-nume"></label>
                     </div>
 
-                    <div id="range-pret" class="col-md-3">
-                        <label> Pret minim: <span>(0)</span><input type="range" id="inp-pret" value="0" min="0" step="5"
-                                max="3000" onchange="getSelectedValue()"> <span id="infoRange"></span>(3000)</span><span
-                                id="val_select">(0)</label>
+                    <div id="range-pret" class="col-md-6">
+                        <label class="form-label"> Pret minim: </label>
+                        <span>(0)</span><span id="inp-pret-container"><input type="range" id="inp-pret"
+                                class="form-range" value="0" min="0" step="5" max="3000" onchange="getSelectedValue()"
+                                style="display: inline-block;"></span> <span id="infoRange">(3000)</span><span
+                            id="val_select">(0)</span>
                     </div>
                 </div>
 
@@ -107,8 +109,8 @@
 
                 <div class="row">
                     <div class="form-floating col-md-3" id="desc-container">
-                        <textarea class="form-control" placeholder="Cauta in descriere" id="inp-descriere" name="descriere"
-                            rows="4" cols="50"></textarea>
+                        <textarea class="form-control" placeholder="Cauta in descriere" id="inp-descriere"
+                            name="descriere" rows="4" cols="50"></textarea>
                         <label for="inp-descriere">Cauta in descriere</label>
                     </div>
 
@@ -124,13 +126,6 @@
                     </div>
                 </div>
 
-                
-
-
-
-
-
-                
                 <div class="row">
                     <div id="shr-container" class="col-md-6">
                         <h3>Disponibil Showroom:</h3><!-- tdebuie sa aiba acelasi name ca sa formeze un grup -->
@@ -145,51 +140,65 @@
                             </label>
                     </div>
                 </div>
-                
-                <p>
-                    <button id="filtrare" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                            height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+
+                <div class="row">
+                    <button id="filtrare" class="btn btn-primary col-md-2 bfiltre"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-funnel" viewBox="0 0 16 16">
                             <path
                                 d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
                         </svg><i class="btn-ascuns">Filtreaza</i></button>
+                </div>
 
-                    <button id="resetare" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                            height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                <div class="row">
+                    <button id="resetare" class="btn btn-danger col-md-2 bfiltre"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-x-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                             <path
                                 d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                         </svg><i class="btn-ascuns">Reseteaza</i></button><br />
-                    <button id="sortCrescNume" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-down"
-                            viewBox="0 0 16 16">
+
+                </div>
+
+                <div class="row">
+                    <button id="sortCrescNume" class="btn btn-secondary col-md-2 bfiltre"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-sort-alpha-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z" />
                             <path
                                 d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z" />
                         </svg><i class="btn-ascuns">Sorteaza crescator dupa pret si
                             destinatie</i></button>
-                    <button id="sortDescrescNume" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-up" viewBox="0 0 16 16">
+                </div>
+                <div class="row">
+                    <button id="sortDescrescNume" class="btn btn-secondary col-md-2 bfiltre"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-sort-alpha-up" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z" />
                             <path
                                 d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zm-8.46-.5a.5.5 0 0 1-1 0V3.707L2.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L4.5 3.707V13.5z" />
                         </svg><i class="btn-ascuns">Sorteaza descrescator dupa pret si
                             destinatie</i></button>
+                </div>
 
-                </p>
-
-                <div id="calc">
-                    <button id="calculare" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                            height="16" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                <div id="calc" class="row">
+                    <button id="calculare" class="btn btn-info col-md-2 bfiltre"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
                             <path
                                 d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
                             <path
                                 d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z" />
                         </svg><i class="btn-ascuns">Calculeaza media preturilor selectate</i></button>
+                    <p id="p-suma">Apăsați Alt+"c" pentru media preturilor produselor selectate. </p>
                 </div>
-                <p id="p-suma">Apăsați Alt+"c" pentru media preturilor produselor selectate. </p>
+
             </div>
+
+
+
             <section id="produse">
                 <div class="grid-produse">
                     <% for( let prod of locals.produse) { %>

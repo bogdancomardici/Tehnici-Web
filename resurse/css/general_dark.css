@@ -45,3 +45,20 @@ body.dark #art-produs{
     color: var(--culoare_text);
     background-color: var(--culoare_card);
 }
+
+body.dark .btn-primary {
+    background-color: var(--culoare_principala);
+    border: 0;
+}
+
+body.dark .btn-primary:hover {
+    background-color: var(--culoare_principala);
+    border: 0;
+    color: white;
+}
+
+body.dark .btn-secondary {
+    background-color: var(--culoare_highlight);
+    border: 0;
+    color: white;
+}

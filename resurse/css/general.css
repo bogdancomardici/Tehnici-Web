@@ -573,3 +573,7 @@ p::selection {
     padding-left: 1em;
     padding-right: 1em;
 }
+
+#inp-pret-container{
+    width: 100%;
+}

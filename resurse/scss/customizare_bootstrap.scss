@@ -1,20 +1,18 @@
-@use '../../node_modules/bootstrap/scss/bootstrap.scss' with
-(   
+@use "../../node_modules/bootstrap/scss/bootstrap.scss" with (
     // customizare screen-sizes
     $grid-breakpoints: (md: 768px, lg: 992px),
-
     // customizare border radius
-    $border-radius:               .37rem,
-    $border-radius-sm:            .24rem,
-    $border-radius-lg:            .5rem,
-    $border-radius-xl:            1rem,
-    $border-radius-2xl:           2rem,
-    $border-radius-pill:          50rem,
+    $border-radius: 0.37rem,
+    $border-radius-sm: 0.24rem,
+    $border-radius-lg: 0.5rem,
+    $border-radius-xl: 1rem,
+    $border-radius-2xl: 2rem,
+    $border-radius-pill: 50rem,
 
     // customizare font-size
     $h1-font-size: 2.4 rem,
     $h2-font-size: 2 rem,
-    
+
     // customizare font implicit
     $font-family-base: "Raleway",
 
@@ -26,21 +24,38 @@
     $btn-close-color: white,
 
     // background body - ales in plus
-    $body-bg: #e07e07
+    $body-bg: #e07e07,
 
+    // slider
+    $form-range-thumb-width: 1.5rem,
+    $form-range-thumb-height: 1.5rem,
+    $form-range-track-bg: var(--culoare_principala),
+    $form-range-thumb-bg: var(--culoare_highlight),
+    $form-range-track-width: 5em
 );
 
-.btn-primary{
+.btn-primary {
     --bs-btn-color: white;
 }
 
-ol, ul, dl{
+.form-range {
+    width: 50%;
+    height: 2rem;
+    padding: 0;
+    background-color: transparent;
+    appearance: none;
+    display: inline-block;
+    padding: 0;
+    padding-top: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+ol,
+ul,
+dl {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
 @import "bootstrap-icons/font/bootstrap-icons.css";
-
-
-
-
