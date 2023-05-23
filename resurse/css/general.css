@@ -577,3 +577,14 @@ p::selection {
 #inp-pret-container{
     width: 100%;
 }
+
+#container_carousel{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#container_carousel img{
+    width: 100%;
+    object-fit: cover;
+}

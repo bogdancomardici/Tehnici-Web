@@ -12,6 +12,13 @@
 
     <%- include("../fragmente/head.ejs"); %>
 
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+        <script src="/resurse/js/carousel.js"></script>
+
+        
+
 </head>
 
 <body>
@@ -44,8 +51,76 @@
                         experiență de condus plăcută și în siguranță pe
                         motocicletă.
                     </p>
+                    <div id="produse_dummy" style="display: none;">
+                        <% for(let imag_carousel of locals.produse_total) { %>
+                            <div class="produs_dummy">
+                                <p class="imagine_produs">/resurse/images/produse/<%- imag_carousel.imagine %></p>
+                                <p class=nume_produs><%- imag_carousel.nume %></p>
+                                <p class=descriere_produs><%- imag_carousel.descriere %></p>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div id="container_carousel">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                                <li data-target="#myCarousel" data-slide-to="4"></li>
+                            </ol>
 
-                    
+                            <!-- Slides -->
+
+
+                            <div class="carousel-inner" id="carousel-slides">
+                                <% var i=0; %>
+                                    <% for(let imag_carousel of locals.imagini_carousel) { %>
+                                        <% if(i==0) { %>
+                                            <div class="carousel-item active imagine_carousel" id="slide<%- i %>">
+                                                <img class="d-block w-100"
+                                                    src="/resurse/images/produse/<%- imag_carousel.imagine %>"
+                                                    alt="<%- imag_carousel.descriere %>" id="imagine_carousel<%- i %>">
+                                                <div class="carousel-caption">
+                                                    <h3 id="nume_carousel<%- i %>"><%- imag_carousel.nume %></h3>
+                                                    <p id="descriere_carousel<%- i %>"><%- imag_carousel.descriere %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <% } else { %>
+                                                <div class="carousel-item imagine_carousel" id="slide<%- i %>">
+                                                    <img class="d-block w-100"
+                                                        src="/resurse/images/produse/<%- imag_carousel.imagine %>"
+                                                        alt="<%- imag_carousel.descriere %>"
+                                                        id="imagine_carousel<%- i %>">
+                                                    <div class="carousel-caption">
+                                                        <h3 id="nume_carousel<%- i %>"><%- imag_carousel.nume %></h3>
+                                                        <p id="descriere_carousel<%- i %>"><%- imag_carousel.descriere
+                                                                %></p>
+                                                    </div>
+                                                </div>
+                                                <% } %>
+
+                                                    <% i=i + 1; %>
+                                                        <% } %>
+
+
+
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+
                     <!--imagine cu descriere-->
                     <figure id="imagine_prezentare">
                         <picture>

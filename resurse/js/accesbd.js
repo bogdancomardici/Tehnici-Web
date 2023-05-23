@@ -22,9 +22,9 @@ class AccesBD{
     }
 
     initLocal(){
-        this.client= new Client({database:"laborator",
-            user:"irina", 
-            password:"irina", 
+        this.client= new Client({database:"douaroti",
+            user:"bogdan", 
+            password:"tw2023pa55", 
             host:"localhost", 
             port:5432});
         // this.client2= new Pool({database:"laborator",
