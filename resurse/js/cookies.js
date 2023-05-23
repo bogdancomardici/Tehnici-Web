@@ -20,13 +20,20 @@ function deleteCookie(nume){
 }
 
 
-window.addEventListener("load", function(){
+window.addEventListener("DOMContentLoaded", function(){
+
+    if (getCookie("ultima_accesare")){
+        document.getElementById("ultima_accesare").innerHTML="Ultima accesare: " + getCookie("ultima_accesare");
+    }
     if (getCookie("acceptat_banner")){
         document.getElementById("banner").style.display="none";
+        document.getElementById("banner-container").style.display="none";
     }
 
     this.document.getElementById("ok_cookies").onclick=function(){
         setCookie("acceptat_banner",true,60000);
+        setCookie("ultima_accesare", (new Date()).toUTCString(), 60000);
         document.getElementById("banner").style.display="none"
+        document.getElementById("banner-container").style.display="none";
     }
 })

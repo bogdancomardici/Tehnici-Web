@@ -44,6 +44,10 @@
     #anunturi{
         column-count: 1;
     }
+
+    #banner-container{
+        animation: none;
+    }
 }
 
 

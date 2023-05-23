@@ -588,3 +588,40 @@ p::selection {
     width: 100%;
     object-fit: cover;
 }
+
+#banner-container{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--culoare_principala);
+    text-align: center;
+    animation: slide-left 5s linear forwards;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+@keyframes slide-left {
+
+    0% {
+        transform: translateX(-100%);
+        background-color: var(--culoare_principala);
+        border: 1px solid black;
+    }
+
+    25%{
+        background-color: var(--culoare_secundara);
+    }
+
+    50% {
+        
+        background-color: var(--culoare_warning);
+        border: 1px solid var(--culoare_secundara);
+    }
+
+    100%{
+        transform: translateX(0%);
+        background-color: var(--culoare_secundara);
+        border: 1px solid black;
+    }
+}

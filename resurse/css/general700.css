@@ -70,4 +70,8 @@
     .btn-ascuns{
         display: none;
     }
+
+    #banner-container{
+        animation: none;
+    }
 }
