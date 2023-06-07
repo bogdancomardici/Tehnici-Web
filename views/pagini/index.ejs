@@ -23,7 +23,29 @@
 
 <body>
     <%- include("../fragmente/header.ejs"); %>
-
+    <div id="container-log">
+    <% if(!locals.utilizator) { %>
+        
+        <form id="form_inreg"  method="post" class="date"  action="/login"  enctype="multipart/form-data">
+            <p>
+                <label>
+                    Username: <input type="text" name="username" id="inp-username" value="" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Parola: <input id="parl" type="password" required  name="parola" value="">
+                </label>
+            </p>
+            <p><input type="submit" value="Logare"></p>
+            <p>Nu ai cont inca? Te poti inregistra <a href="/inregistrare">aici</a>.</p>
+        </form>
+        <p><%- locals.mesajLogin %></p>
+    
+        <% } else {%>
+           <p>Esti logat ca <%- locals.utilizator.username %></p>
+        <% }  %>
+    </div>
         <main>
             <div id="grid-pagina">
                 <!--folosirea tag-urilor section p ol ul-->

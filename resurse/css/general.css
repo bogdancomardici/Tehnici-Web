@@ -149,7 +149,9 @@ table {
     max-width: 100vw;
 }
 
-#grid-pagina>div {
+#grid-pagina>div,
+#container-log,
+.afisaj {
     color: var(--culoare_text);
     border: var(--grosime-border) solid black;
     background-color: var(--culoare_card);
@@ -160,7 +162,9 @@ table {
 
 #grid-pagina>*,
 footer,
-#nav {
+#nav,
+#container-log,
+.afisaj {
     color: var(--culoare_text);
     box-shadow: 0.1em 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
         -0.1em -0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2),
@@ -582,6 +586,8 @@ p::selection {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 #container_carousel img{

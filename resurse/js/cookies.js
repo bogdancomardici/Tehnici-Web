@@ -1,9 +1,23 @@
 //setCookie("a",10, 1000)
+/**
+ * Sets a cookie with the specified name, value, and expiration time.
+ * @param {string} name - The name of the cookie.
+ * @param {string} value - The value of the cookie.
+ * @param {number} expirationTime - The expiration time of the cookie in milliseconds.
+ * @returns {void}
+ */
+
 function setCookie(nume, val, timpExpirare){//timpExpirare in milisecunde
     d=new Date();
     d.setTime(d.getTime()+timpExpirare)
     document.cookie=`${nume}=${val}; expires=${d.toUTCString()}`;
 }
+
+/**
+ * Retrieves the value of a cookie with the specified name.
+ * @param {string} name - The name of the cookie.
+ * @returns {string|null} The value of the cookie, or null if the cookie doesn't exist.
+ */
 
 function getCookie(nume){
     vectorParametri=document.cookie.split(";") // ["a=10","b=ceva"]
@@ -14,11 +28,21 @@ function getCookie(nume){
     return null;
 }
 
+/**
+ * Deletes a cookie with the specified name.
+ * @param {string} name - The name of the cookie to be deleted.
+ * @returns {void}
+ */
+
 function deleteCookie(nume){
     console.log(`${nume}; expires=${(new Date()).toUTCString()}`)
     document.cookie=`${nume}=0; expires=${(new Date()).toUTCString()}`;
 }
 
+/**
+ * Event handler function that is executed when the DOM content is loaded.
+ * @returns {void}
+ */
 
 window.addEventListener("DOMContentLoaded", function(){
 

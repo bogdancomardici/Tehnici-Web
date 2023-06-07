@@ -1,14 +1,7 @@
-/*
-
-ATENTIE!
-inca nu am implementat protectia contra SQL injection
-*/
-
 const {Client, Pool}=require("pg");
 
 
 class AccesBD{
-    // daca are # in fata e private
     static #instanta=null;
     static #initializat=false;
 
@@ -27,11 +20,6 @@ class AccesBD{
             password:"tw2023pa55", 
             host:"localhost", 
             port:5432});
-        // this.client2= new Pool({database:"laborator",
-        //         user:"irina", 
-        //         password:"irina", 
-        //         host:"localhost", 
-        //         port:5432});
         this.client.connect();
     }
 
@@ -51,7 +39,7 @@ class AccesBD{
     /**
      * Returneaza instanta unica a clasei
      *
-     * @param {ObiectConexiune} un obiect cu datele pentru query
+     * @param {ObiectConexiune} init - un obiect cu datele pentru query
      * @returns {AccesBD}
      */
     static getInstanta({init="local"}={}){
@@ -67,8 +55,6 @@ class AccesBD{
                 switch(init){
                     case "local":this.#instanta.initLocal();
                 }
-                
-
                 //daca ajunge aici inseamna ca nu s-a produs eroare la initializare
                 
             }
@@ -135,7 +121,13 @@ class AccesBD{
         }
     }
     insert({tabel="",campuri={}} = {}, callback){
-        // campuri = {nume: "Irina", prenume: "Popescu", varsta: 20, email: "irina@popescu", parola: "1234", rol: "user",}
+                /*
+        campuri={
+            nume:"savarina",
+            pret: 10,
+            calorii:500
+        }
+        */
         console.log("-------------------------------------------")
         console.log(Object.keys(campuri).join(","));
         console.log(Object.values(campuri).join(","));
@@ -176,32 +168,19 @@ class AccesBD{
         this.client.query(comanda,callback)
     }
 
-    // updateParametrizat({tabel="",campuri=[],valori=[], conditiiAnd=[]} = {}, callback, parametriQuery){
-    //     if(campuri.length!=valori.length)
-    //         throw new Error("Numarul de campuri difera de nr de valori")
-    //     let campuriActualizate=[];
-    //     for(let i=0;i<campuri.length;i++)
-    //         campuriActualizate.push(`${campuri[i]}=$${i+1}`);
-    //     let conditieWhere="";
-    //     if(conditiiAnd.length>0)
-    //         conditieWhere=`where ${conditiiAnd.join(" and ")}`;
-    //     let comanda=`update ${tabel} set ${campuriActualizate.join(", ")}  ${conditieWhere}`;
-    //     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111",comanda);
-    //     this.client.query(comanda,valori, callback)
-    // }
-
-
-    //TO DO
-    // updateParametrizat({tabel="",campuri={}, conditiiAnd=[]} = {}, callback, parametriQuery){
-    //     let campuriActualizate=[];
-    //     for(let prop in campuri)
-    //         campuriActualizate.push(`${prop}='${campuri[prop]}'`);
-    //     let conditieWhere="";
-    //     if(conditiiAnd.length>0)
-    //         conditieWhere=`where ${conditiiAnd.join(" and ")}`;
-    //     let comanda=`update ${tabel} set ${campuriActualizate.join(", ")}  ${conditieWhere}`;
-    //     this.client.query(comanda,valori, callback)
-    // }
+    updateParametrizat({tabel="",campuri=[],valori=[], conditiiAnd=[]} = {}, callback, parametriQuery){
+        if(campuri.length!=valori.length)
+            throw new Error("Numarul de campuri difera de nr de valori")
+        let campuriActualizate=[];
+        for(let i=0;i<campuri.length;i++)
+            campuriActualizate.push(`${campuri[i]}=$${i+1}`);
+        let conditieWhere="";
+        if(conditiiAnd.length>0)
+            conditieWhere=`where ${conditiiAnd.join(" and ")}`;
+        let comanda=`update ${tabel} set ${campuriActualizate.join(", ")}  ${conditieWhere}`;
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111",comanda);
+        this.client.query(comanda,valori, callback)
+    }
 
     delete({tabel="",conditiiAnd=[]} = {}, callback){
         let conditieWhere="";
